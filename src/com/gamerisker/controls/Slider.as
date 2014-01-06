@@ -26,7 +26,7 @@ package com.gamerisker.controls
 	{
 		private var m_background : Scale9Image;
 		private var m_thumb : Thumb;
-		private var startPoint : Number;
+		private var m_startPoint : Number;
 		private var m_maximum : Number = 100;
 		private var m_minimum : Number = 0;
 		private var m_value : int;
@@ -204,23 +204,23 @@ package com.gamerisker.controls
 			{
 				if(touch.target is Image)
 				{
-					startPoint = touch.globalX;
+					m_startPoint = touch.globalX;
 				}
 				else if(touch.target is Scale9Image)
 				{
-					startPoint = m_thumb.x;
+					m_startPoint = m_thumb.x;
 				}
 			}
 			else if(touch.phase == TouchPhase.MOVED)
 			{
-				setPosition(startPoint , touch.globalX);
+				setPosition(m_startPoint , touch.globalX);
 			}
 			else if(touch.phase == TouchPhase.ENDED)
 			{
 				if(touch.target is Scale9Image)
 				{
 					this.globalToLocal(new Point(touch.globalX , touch.globalY),point);
-					setPosition(startPoint , (point.x - m_thumb.width/2));
+					setPosition(m_startPoint , (point.x - m_thumb.width/2));
 				}
 			}
 		}
@@ -250,7 +250,7 @@ package com.gamerisker.controls
 			}
 			
 			m_thumb.x += endPoint;
-			this.startPoint = globalX;
+			this.m_startPoint = globalX;
 			m_value = int(m_minimum + (m_thumb.x / (m_width - m_thumb.width)) * (m_maximum - m_minimum));
 			
 			dispatchEventWith(ComponentEvent.SLIDERCHANGE , false , this);
