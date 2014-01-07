@@ -10,7 +10,8 @@ Rookie Components 是一套基于Starling的UI组件，主要借鉴flash compone
     
 请帮助 Rookie Components 变得完美
 --------------------------------
-	我是一名菜鸟程序员，Rookie Components 的代码质量肯定还有很多不足的地方，如果有什么问题，请尽量的联系我，帮助我一起完善Rookie Components.
+	我是一名菜鸟程序员，Rookie Components 的代码质量肯定还有很多不足的地方<br>
+	如果有什么问题，请尽量的联系我，帮助我一起完善Rookie Components.<br>
 
 联系方式
 --------
@@ -18,5 +19,5 @@ Rookie Components 是一套基于Starling的UI组件，主要借鉴flash compone
 
 组件文档
 -------
-[Sparrow Framework][1]
+[doc.gamerisker.com][1]
 [1]:http://doc.gamerisker.com
