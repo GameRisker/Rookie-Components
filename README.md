@@ -7,3 +7,5 @@ Rookie-Components
     如果你添加了优秀的组件请不要忘记还有很多同志们都需要。<br>
     开源让世界更美好。为flash的移动开发付出自己的一份微薄力量。<br>
 
+
+    一个简单的帮助文档：http://doc.gamerisker.com
