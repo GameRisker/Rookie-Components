@@ -119,7 +119,7 @@ package com.gamerisker.controls
 			if(m_align != value)
 			{
 				m_align = value;
-				invalidate(INVALIDATION_FLAG_TEXT);
+				invalidate(INVALIDATION_FLAG_LAYOUT);
 			}
 		}
 		
@@ -222,11 +222,6 @@ package com.gamerisker.controls
 				m_tf = new TextField(m_width,m_height,"");
 				m_tf.autoSize = TextFieldAutoSize.VERTICAL;
 				addChildAt(m_tf,0);
-			}
-			
-			if(m_tf.hAlign != m_align)
-			{
-				m_tf.hAlign = m_align;
 			}
 			
 			if(m_tf.text != m_lable)
