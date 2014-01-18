@@ -9,17 +9,24 @@ package com.gamerisker.containers
 	/**
 	 *	 静态图片显示类	不可以设置宽度高度，显示的高度宽度为纹理的高宽度
 	 * @author YangDan
-	 * 
+	 * 	{	
+	 * 		"skin" : 皮肤名称,
+	 * 		"skinParent" : 皮肤父纹理集合
+	 *	}
 	 */	
 	public class SkinImage extends SkinnableContainer
 	{
+		/** @private */	
 		protected var m_background : Image;
 		
-		public function SkinImage()
-		{
-
-		}
+		/**
+		 *	构造函数 
+		 */		
+		public function SkinImage(){}
 		
+		/**
+		 *	清除组件纹理。包括销毁纹理本身,不能销毁原始纹理集，否则会报空 
+		 */		
 		override public function Destroy():void
 		{
 			if(m_background)
@@ -31,12 +38,22 @@ package com.gamerisker.containers
 			super.Destroy();
 		}
 		
+		/**
+		 *	 无法设置宽度,可获得宽度
+		 * @return 
+		 */		
 		override public function get width():Number{	return m_width;}
 		override public function set width(w:Number):void{}
 		
+		/**
+		 *	 无法设置高度,可获得高度
+		 * @return 
+		 */		
 		override public function get height():Number{return m_height;}
 		override public function set height(h:Number):void{}
 		
+		
+		/** @private */	
 		override protected function draw():void
 		{
 			const skinInvalid : Boolean = isInvalid(INVALIDATION_FLAG_SKIN);
@@ -53,6 +70,7 @@ package com.gamerisker.containers
 			}
 		}
 		
+		/** @private */	
 		protected function refreshState() : void
 		{
 			if(touchable != m_enabled)
@@ -61,6 +79,7 @@ package com.gamerisker.containers
 			}
 		}
 		
+		/** @private */	
 		protected function refreshSkin() : void
 		{
 			var texture : Texture = skinInfo["skin"];

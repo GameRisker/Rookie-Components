@@ -4,34 +4,38 @@ package com.gamerisker.core
 	import starling.core.Starling;
 	
 	/**
-	 * 渲染序列
+	 * 核心渲染序列处理类
 	 * @author YangDan
 	 * 
 	 */	
 	public class ValidationQueue implements IAnimatable
 	{
+		/** @private */	
 		private var m_starling : Starling;
+		
+		/** @private */	
+		private var m_isValidating : Boolean;
 		
 		/**
 		 *	需要渲染队列 
 		 */		
 		private var m_queue : Vector.<IComponent> = new Vector.<IComponent>;
 		
-		private var m_isValidating : Boolean;
-
 		/**
 		 *	是否正在渲染 
 		 */
-		public function get isValidating():Boolean
-		{
-			return m_isValidating;
-		}
+		public function get isValidating():Boolean{return m_isValidating;}
 		
+		/**
+		 *	构造函数 
+		 * 
+		 */		
 		public function ValidationQueue()
 		{
 			m_starling = Starling.current;
 		}
 		
+		/** @private */	
 		public function advanceTime(time:Number):void
 		{
 			if(m_isValidating || m_queue.length == 0)

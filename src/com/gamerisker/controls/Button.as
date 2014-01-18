@@ -14,23 +14,52 @@ package com.gamerisker.controls
 	/**
 	 * <p>按钮的实现，包含一张背景图片，一个文本，该按钮类，大多是参考的Starling里的Button,
 	 * 你可以在实例化的时候给按钮传入两个纹理， 按钮弹起时的纹理、按钮按下时的纹理,可以实现按钮基于九宫格的宽度，高度设置</p>
+	 * <br>纹理集合{	"skin" : 皮肤名称
+	 * 				"upSkin" : 按钮弹起皮肤
+	 * 			   	"downSkin" : 按钮按下皮肤
+	 *             	"disabledSkin" : 按钮禁用皮肤
+	 * 				"scale9GridX" : 9宫格X坐标
+	 * 				"scale9GridY" : 9宫格Y坐标
+	 * 				"scale9GridWidth" : 9宫格宽度
+	 * 				"scale9GridHeight" : 9宫格高度
+	 * 				"skinParent" : 皮肤父纹理集合		
+	 * 				}
 	 * @author YangDan
 	 */	
 	public class Button extends BaseButton
 	{
+		/** @private */	
 		protected var m_background		: Scale9Image;
+		
+		/** @private */	
 		protected var m_textField 		: TextField;
+		
+		/** @private */	
 		protected var m_scale9Grid		: Rectangle;
+		
+		/** @private */	
 		protected var m_fontName		: String;
+		
+		/** @private */	
 		protected var m_fontSize		: int = 12;
+		
+		/** @private */	
 		protected var m_fontColor		: uint;
+		
+		/** @private */	
 		protected var m_fontBold		: Boolean;
+		
+		/** @private */	
 		protected var m_label 			: String;
 		
-		public function Button()
-		{
-		}
+		/**
+		 *	构造函数 
+		 */		
+		public function Button(){}
 		
+		/**
+		 *	清除组件纹理。包括销毁纹理本身,不能销毁原始纹理集，否则会报空 
+		 */		
 		override public function Destroy():void
 		{
 			removeChild(m_background);
@@ -122,6 +151,7 @@ package com.gamerisker.controls
 			}
 		}
 		
+		/** @private */	
 		override protected function draw():void
 		{
 			const skinInvalid : Boolean = isInvalid(INVALIDATION_FLAG_SKIN);
@@ -144,13 +174,13 @@ package com.gamerisker.controls
 				refreshText();	
 			}
 			
-			if(sizeInvalid || skinInvalid || stateInvalid)
+			if(textInvalid || sizeInvalid || skinInvalid || stateInvalid)
 			{
 				refreshSize();	
 			}
 		}
 		
-		
+		/** @private */	
 		protected function refreshState() : void
 		{
 			if(touchable != m_enabled)
@@ -164,6 +194,7 @@ package com.gamerisker.controls
 			}
 		}
 		
+		/** @private */	
 		protected function refreshSkin() : void
 		{
 			m_scale9Grid = skinInfo["scale9Grid"];
@@ -181,6 +212,7 @@ package com.gamerisker.controls
 			}
 		}
 		
+		/** @private */	
 		protected function refreshText() : void
 		{
 			if(m_label == null)
@@ -220,6 +252,7 @@ package com.gamerisker.controls
 			}
 		}
 		
+		/** @private */	
 		protected function refreshSize() : void
 		{
 			if(m_background.width != m_width)
@@ -245,6 +278,7 @@ package com.gamerisker.controls
 			}
 		}
 
+		/** @private */	
 		override protected function onTouchEvent(event : TouchEvent) : void
 		{
 			var touch : Touch = event.getTouch(this);
@@ -272,6 +306,7 @@ package com.gamerisker.controls
 			}
 		}
 		
+		/** @private */	
 		private function reset():void
 		{
 			m_isDown = false;

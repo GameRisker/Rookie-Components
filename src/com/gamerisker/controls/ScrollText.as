@@ -13,11 +13,22 @@ package com.gamerisker.controls
 	 */	
 	public class ScrollText extends BaseScrollPane
 	{
+		/** @private */	
 		protected var m_text : String;
+		
+		/** @private */	
 		protected var m_fontBold : Boolean = false;
+		
+		/** @private */	
 		protected var m_fontSize : int = 12;
+		
+		/** @private */	
 		protected var m_fontColor : uint = 0xffffff;
+		
+		/** @private */	
 		protected var m_align : String = "left";
+		
+		/** @private */	
 		protected var m_fontName : String = "Verdana";
 		
 		/**
@@ -106,7 +117,11 @@ package com.gamerisker.controls
 				invalidate(INVALIDATION_FLAG_SIZE);
 			}
 		}
-
+		
+		/**
+		 * 构造函数
+		 * 
+		 */
 		public function ScrollText()
 		{
 			m_background = new TextField(10,10,"","Verdana",48,0xffffff);
@@ -114,11 +129,15 @@ package com.gamerisker.controls
 			TextField(m_background).hAlign = HAlign.LEFT;
 		}
 		
+		/**
+		 *	清除组件纹理。包括销毁纹理本身,不能销毁原始纹理集，否则会报空 
+		 */		
 		override public function Destroy():void
 		{
 			super.Destroy();
 		}
 		
+		/** @private */	
 		override protected function draw():void
 		{
 			const initInvalid : Boolean = isInvalid(INVALIDATION_FLAG_INIT);
@@ -153,6 +172,7 @@ package com.gamerisker.controls
 			}
 		}
 		
+		/** @private */	
 		protected function refreshState() : void
 		{
 			(m_background as TextField).bold = m_fontBold;
@@ -161,6 +181,7 @@ package com.gamerisker.controls
 			(m_background as TextField).fontName = m_fontName;
 		}
 		
+		/** @private */	
 		override protected function refreshSize() : void
 		{
 			super.refreshSize();
@@ -170,6 +191,7 @@ package com.gamerisker.controls
 			(m_background as TextField).fontSize = m_fontSize;
 		}
 		
+		/** @private */	
 		protected function refreshData() : void
 		{
 			var textField : TextField = TextField(m_background);
@@ -180,6 +202,7 @@ package com.gamerisker.controls
 			this.finishScrollingVertically();
 		}
 		
+		/** @private */	
 		override protected function updatePosition():void
 		{
 			var _verticalScrollPosition : Number = m_topViewPortOffset - verticalScrollPosition;

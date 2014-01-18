@@ -9,21 +9,44 @@ package com.gamerisker.controls
 
 	/**
 	 *	图片按钮 	该组件不能设置 宽度 高度。
+	 * <br>纹理集合{	"upSkin" : 按钮弹起皮肤
+	 * 			   	"downSkin" : 按钮按下皮肤
+	 *             	"disabledSkin" : 按钮禁用皮肤
+	 * 				"skinParent" : 皮肤父纹理集合		
+	 * 				}
 	 * @author YangDan
 	 * 
 	 */	
 	public class ImageButton extends BaseButton
 	{
+		/** @private */	
 		protected var m_background : Image;
 		
+		/**
+		 *	构造函数 
+		 * 
+		 */		
 		public function ImageButton(){}
 		
+		/**
+		 *	无法设置宽度，可以获取宽度 
+		 * @return 
+		 * 
+		 */		
 		override public function get width():Number{return m_width;}
 		override public function set width(w:Number):void{}
 		
+		/**
+		 *	无法设置高度，可以获取高度 
+		 * @return 
+		 * 
+		 */		
 		override public function get height():Number{return m_height;}
 		override public function set height(h:Number):void{}
 		
+		/**
+		 *	清除组件纹理。包括销毁纹理本身,不能销毁原始纹理集，否则会报空  
+		 */		
 		override public function Destroy():void
 		{
 			if(!m_background)
@@ -34,6 +57,7 @@ package com.gamerisker.controls
 			super.Destroy();
 		}
 		
+		/** @private */	
 		override protected function draw():void
 		{
 			const skinInvalid : Boolean = isInvalid(INVALIDATION_FLAG_SKIN);
@@ -50,6 +74,7 @@ package com.gamerisker.controls
 			}
 		}
 		
+		/** @private */	
 		protected function refreshSkin() : void
 		{
 			if(m_background)
@@ -69,6 +94,7 @@ package com.gamerisker.controls
 			m_height = m_background.height;
 		}
 		
+		/** @private */	
 		protected function refreshState() : void
 		{
 			if(m_background.touchable != m_enabled)
@@ -82,6 +108,7 @@ package com.gamerisker.controls
 			}
 		}
 		
+		/** @private */	
 		override protected function onTouchEvent(event:TouchEvent):void
 		{
 			var touch : Touch = event.getTouch(this);
@@ -119,6 +146,7 @@ package com.gamerisker.controls
 			}
 		}
 		
+		/** @private */	
 		protected function reset():void
 		{
 			m_isDown = false;

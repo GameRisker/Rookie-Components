@@ -12,18 +12,32 @@ package com.gamerisker.containers
 	
 	/**
 	 *	可缩放图片显示类	根据9宫格拉升
+	 * {
+	 * 		"skin" : 皮肤名称,
+	 * 		"scale9GridX" : 9宫格X坐标,
+	 * 		"scale9GridY" : 9宫格Y坐标,
+	 * 		"scale9GridWidth" :  9宫格宽度,
+	 * 		"scale9GridHeight" : 9宫格高度,
+	 * 		"skinParent" : 皮肤父纹理集合
+	 * }
 	 * @author YangDan
 	 * 
 	 */	
 	public class SkinFrame extends SkinnableContainer
 	{
+		/** @private */	
 		protected var m_background : Scale9Image;
 		
-		public function SkinFrame()
-		{
-
-		}
+		/**
+		 *	构造函数 
+		 * 
+		 */		
+		public function SkinFrame(){}
 		
+		/**
+		 *	清除组件纹理。包括销毁纹理本身,不能销毁原始纹理集，否则会报空 
+		 * 
+		 */		
 		override public function Destroy():void
 		{
 			if(m_background)
@@ -35,6 +49,7 @@ package com.gamerisker.containers
 			super.Destroy();
 		}
 		
+		/** @private */	
 		override protected function draw():void
 		{
 			const skinInvalid : Boolean = isInvalid(INVALIDATION_FLAG_SKIN);
@@ -57,6 +72,7 @@ package com.gamerisker.containers
 			}
 		}
 		
+		/** @private */	
 		protected function refreshState() : void
 		{
 			if(touchable != m_enabled)
@@ -65,6 +81,7 @@ package com.gamerisker.containers
 			}
 		}
 		
+		/** @private */	
 		protected function refreshSkin() : void
 		{
 			const m_scale9Grid : Rectangle = m_skinInfo["scale9Grid"];
@@ -80,6 +97,7 @@ package com.gamerisker.containers
 			}
 		}
 		
+		/** @private */	
 		protected function refreshSize() : void
 		{
 			if(m_background.width != m_width)

@@ -8,38 +8,75 @@ package com.gamerisker.core
 	import starling.display.Sprite;
 
 	/**
-	 * Component类是所有可视组件的基类
+	 * Component 类是所有可视组件的基类
 	 * @author YangDan
 	 */	
 	public class Component extends Sprite implements IComponent
 	{
 		public const version : String = "1.0.0.0";
 		
+		/** @private */	
 		protected static const VALIDATION_QUEUE : ValidationQueue = new ValidationQueue();
 		
+		/** @private */	
 		protected static const INVALIDATION_FLAG_ALL : String = "all";
 		
+		/** @private */	
 		protected static const INVALIDATION_FLAG_STATE : String = "state";
 		
+		/** @private */	
 		protected static const INVALIDATION_FLAG_SIZE : String = "size";
 		
+		/** @private */	
 		protected static const INVALIDATION_FLAG_SKIN : String = "skin";
 		
+		/** @private */	
 		protected static const INVALIDATION_FLAG_DATA : String = "data";
 		
+		/** @private */	
 		protected static const INVALIDATION_FLAG_SELECTED : String = "selected";
 		
+		/** @private */	
 		protected static const INVALIDATION_FLAG_TEXT : String = "text";
 		
+		/** @private */	
+		protected static const INVALIDATION_FLAG_INIT : String = "init";
+		
+		/** @private */	
 		protected static const INVALIDATION_FLAG_LAYOUT : String = "layout";
 		
+		/** @private */	
 		protected var m_invalidationFlags : Object = {"all" : true};	//默认设置all为true	第一次刷新所有方法
 		
+		/** @private */	
+		protected var m_enabled : Boolean = true;
+		
+		/** @private */	
 		protected var m_width : Number = 0;
 		
+		/** @private */	
 		protected var m_height : Number = 0;
 		
-		protected var m_x : int
+		/** @private */	
+		protected var m_x : int;
+		
+		/** @private */	
+		protected var m_y : int;
+		
+		/** @private */	
+		protected function draw() : void{}
+		
+		/**
+		 *	构造函数 
+		 */		
+		public function Component(){}
+		
+		/**
+		 *	获取或设置 x 坐标，该坐标表示组件在其父容器内沿 x 轴的位置。 以像素为单位描述该值并且从顶部计算该值。 
+		 *  <br>设置此属性将导致 move 事件被调度。
+		 * @return 
+		 * 
+		 */		
 		override public function get x() : Number{ return ( isNaN(m_x) )?super.x:m_x; }
 		override public function set x(value : Number):void
 		{
@@ -49,7 +86,12 @@ package com.gamerisker.core
 			}
 		}
 
-		protected var m_y : int;
+		/**
+		 *  获取或设置 y 坐标，该坐标表示组件在其父容器内沿 y 轴的位置。 以像素为单位描述该值并且从顶部计算该值。 
+		 *  <br>设置此属性将导致 move 事件被调度。
+		 * @return 
+		 * 
+		 */		
 		override public function get y() : Number{return ( isNaN(m_y) )?super.y:m_y;}
 		override public function set y(value : Number):void
 		{
@@ -59,6 +101,11 @@ package com.gamerisker.core
 			}
 		}
 
+		/**
+		 *	将组件移动到其父项内的指定位置。 
+		 * @param x : 指定组件在其父项内位置的 x 坐标值（以像素为单位）。 从左边计算该值。
+		 * @param y : 指定组件在其父项内位置的 y 坐标值（以像素为单位）。 从顶部计算该值。  
+		 */		
 		public function move(x:Number , y : Number) : void
 		{
 			m_x = x;
@@ -67,7 +114,11 @@ package com.gamerisker.core
 			super.y = Math.round(y);
 		}
 		
-		protected var m_enabled : Boolean = true;
+		/**
+		 *	获取或设置一个值，该值指示组件是否可以接受用户交互。 
+		 * @return 
+		 * 
+		 */		
 		public function get enabled():Boolean{return m_enabled;}
 		public function set enabled(value:Boolean):void
 		{
@@ -88,8 +139,6 @@ package com.gamerisker.core
 			draw();
 		}
 		
-		public function Component(){}
-		
 		/**
 		 *	清除组件纹理。包括销毁纹理本身,不能销毁原始纹理集，否则会报空
 		 * 
@@ -99,12 +148,13 @@ package com.gamerisker.core
 			dispose();
 			m_invalidationFlags = null;
 		}
-
-		protected var m_id : String;	
-		public function get id():String{return m_id;}
-		public function set id(value:String):void{m_id = value;}
-
 		
+		/**
+		 *	 获取或设置组件的宽度（以像素为单位）。 
+		 * @param value
+		 * 
+		 */		
+		override public function get width() : Number{return m_width;}
 		override public function set width(value : Number) : void
 		{
 			if(m_width == value || isNaN(value))
@@ -117,11 +167,12 @@ package com.gamerisker.core
 			invalidate(INVALIDATION_FLAG_SIZE);
 		}
 		
-		override public function get width() : Number
-		{
-			return m_width;
-		}
-		
+		/**
+		 *	 获取或设置组件的高度，以像素为单位。 
+		 * @return 
+		 * 
+		 */		
+		override public function get height():Number{return m_height;}
 		override public function set height(value : Number) : void
 		{
 			if(m_height == value || isNaN(value))
@@ -133,18 +184,6 @@ package com.gamerisker.core
 			
 			invalidate(INVALIDATION_FLAG_SIZE);
 		}
-		
-		override public function get height():Number 
-		{
-			return m_height;
-		}
-		
-		protected function draw() : void
-		{
-
-		}
-		
-
 		
 		/**
 		 *	检查是否正在等待
@@ -174,7 +213,7 @@ package com.gamerisker.core
 		}
 		
 		/**
-		 *	加入等待序列 
+		 *	加入等待渲染序列 ，标记该组件属性已改变 ，等待下一帧渲染 
 		 * @param flag	修改值
 		 * 
 		 */		
@@ -188,7 +227,9 @@ package com.gamerisker.core
 		}
 		
 		/**
-		 *	序列调用 
+		 *	渲染序列内部调用方法。
+		 *  <br>再调用invalidate()方法后，等待下一帧会调用该方法来进行渲染本身.
+		 *  <br>组件再完成渲染后会触发 ComponentEvent.CREATEION_COMPLETE 事件
 		 * 
 		 */		
 		public function validate() : void

@@ -26,62 +26,92 @@ package com.gamerisker.containers
 	 */	
 	public class BaseScrollPane extends Component
 	{
-		public static const INVALIDATION_FLAG_INIT : String = "init";
-		
+		/**
+		 *	滚动条显示 
+		 */		
 		public static const SCROLL_BAR_DISPLAY_MODE_FLOAT : String = "float";
 		
+		/**
+		 *	滚动条不显示 
+		 */		
 		public static const SCROLL_BAR_DISPLAY_MODE_NONE : String = "none";
 		
+		/** @private */		
 		protected const VELOCITY_WEIGHTS:Vector.<Number> = new <Number>[1, 1.33, 1.66, 2];
 		
+		/** @private */	
 		protected const CURRENT_VELOCITY_WEIGHT : Number = 2.33;
 		
+		/** @private */	
 		protected const MINIMUM_VELOCITY:Number = 0.02;
 		
+		/** @private */	
 		protected const FRICTION:Number = 0.998;
 		
+		/** @private */	
 		protected const EXTRA_FRICTION:Number = 0.95;
 		
+		/** @private */	
 		protected const ELASTICITY : Number = 0.33;
 		
+		/** @private */	
 		protected const ELASTICSNAPDURATION:Number = 0.5;
 
+		/** @private */	
 		protected const HELPER_POINT : Point = new Point;
 		
+		/** @private */	
 		protected var INVALIDATION_FLAG_CREATE : String = "create";
 		
+		/** @private */	
 		protected var m_verticalScrollBar : ScrollBar;
 		
+		/** @private */	
 		protected var m_maxVerticalScrollPosition : Number;
 		
+		/** @private */	
 		protected var m_minVerticalScrollPosition : Number;
 		
+		/** @private */	
 		protected var m_verticalScrollPosition : Number = 0;
 		
+		/** @private */	
 		protected var m_verticalAutoScrollTween : Tween;
 		
+		/** @private */	
 		protected var m_scrollRect : Rectangle;											//可视范围的宽高
 		
+		/** @private */	
 		protected var m_background : DisplayObjectContainer;
 		
+		/** @private */	
 		protected var m_velocityY : Number;
 		
+		/** @private */	
 		protected var m_previousTouchY : Number;
 		
+		/** @private */	
 		protected var m_startTouchY : Number;
 		
+		/** @private */	
 		protected var m_currentTouchY : Number;
 		
+		/** @private */	
 		protected var m_startVerticalScrollPosition : Number;
 		
+		/** @private */	
 		protected var m_previousTouchTime : int;
 		
+		/** @private */	
 		protected var m_isTouching : Boolean;									//是否滑动
 		
+		/** @private */	
 		protected var m_previousVelocityY : Vector.<Number> = new Vector.<Number>;
 
+		/** @private */	
 		protected var m_topViewPortOffset : Number = 0;
 		
+		/** @private */	
 		protected var m_scrollBarDisplayMode : String;
 		
 		/**
@@ -92,11 +122,15 @@ package com.gamerisker.containers
 		public function get verticalScrollPosition():Number{return m_verticalScrollPosition;};
 		public function set verticalScrollPosition(value:Number):void{m_verticalScrollPosition = value;};
 
+		/**
+		 *	构造函数 
+		 */		
+		public function BaseScrollPane(){}
 		
-		public function BaseScrollPane()
-		{
-		}
-		
+		/**
+		 *	清除组件纹理。包括销毁纹理本身,不能销毁原始纹理集，否则会报空 
+		 * 
+		 */		
 		override public function Destroy():void
 		{
 			m_background.removeEventListener(TouchEvent.TOUCH , onTouchEvent);
@@ -120,6 +154,7 @@ package com.gamerisker.containers
 		public function set scrollBarDisplayMode(value : String) : void{m_scrollBarDisplayMode = value;}
 		public function get scrollBarDisplayMode():String{return m_scrollBarDisplayMode;}
 		
+		/** @private */	
 		override protected function draw():void
 		{
 			const initInvalid : Boolean = isInvalid(INVALIDATION_FLAG_INIT);
@@ -142,6 +177,7 @@ package com.gamerisker.containers
 			}
 		}
 		
+		/** @private */	
 		protected function refreshSize():void
 		{
 			var isChange : Boolean;
@@ -163,7 +199,8 @@ package com.gamerisker.containers
 				this.clipRect = m_scrollRect;
 			}
 		}
-		
+
+		/** @private */	
 		protected function refreshInit() : void
 		{
 			m_scrollBarDisplayMode = SCROLL_BAR_DISPLAY_MODE_FLOAT;
@@ -174,6 +211,7 @@ package com.gamerisker.containers
 			addChild(m_background);
 		}
 		
+		/** @private */	
 		protected function createScrollBars() : void
 		{
 			if(m_scrollBarDisplayMode != SCROLL_BAR_DISPLAY_MODE_NONE)
@@ -192,8 +230,9 @@ package com.gamerisker.containers
 			}
 		}
 		
-		/**
-		 *	鼠标操作 
+		/** 
+		 * @private
+		 * 鼠标操作 
 		 * @param event
 		 * 
 		 */		
@@ -247,8 +286,8 @@ package com.gamerisker.containers
 			}
 		}
 
-		/**
-		 *	 
+		/** 
+		 * @private 
 		 * @param event
 		 * 
 		 */		
@@ -269,7 +308,8 @@ package com.gamerisker.containers
 			}
 		}
 		
-		/**
+		/** 
+		 * @private
 		 * 判断是否超越范围、超越就恢复
 		 * @private
 		 */
@@ -287,7 +327,8 @@ package com.gamerisker.containers
 			this.throwTo(targetVerticalScrollPosition, ELASTICSNAPDURATION);
 		}
 		
-		/**
+		/** 
+		 * @private
 		 *	更新		verticalScrollPosition 值 
 		 * @param touchY
 		 * 
@@ -315,7 +356,8 @@ package com.gamerisker.containers
 			}
 		}
 		
-		/**
+		/** 
+		 * @private
 		 *	获取缓动速度、目标坐标 
 		 * @param pixelsPerMS
 		 * 
@@ -351,7 +393,8 @@ package com.gamerisker.containers
 			this.throwTo(targetVerticalScrollPosition,duration / 1000);
 		}
 		
-		/**
+		/** 
+		 * @private
 		 *	缓动处理函数 
 		 * @param targetVerticalScrollPosition
 		 * @param duration
@@ -377,7 +420,8 @@ package com.gamerisker.containers
 			}
 		}
 		
-		/**
+		/** 
+		 * @private
 		 *	Tween 开始执行 
 		 * 
 		 */		
@@ -386,7 +430,8 @@ package com.gamerisker.containers
 			this.addEventListener(Event.ENTER_FRAME , onEnterFrameTween);
 		}
 		
-		/**
+		/** 
+		 * @private
 		 *	 更新坐标
 		 * 
 		 */		
@@ -395,7 +440,8 @@ package com.gamerisker.containers
 			onChangePosition()
 		}
 		
-		/**
+		/** 
+		 * @private
 		 *	操作完成 
 		 * 
 		 */		
@@ -411,7 +457,8 @@ package com.gamerisker.containers
 			m_isTouching = false;
 		}
 		
-		/**
+		/** 
+		 * @private
 		 *	缓动运行结束 
 		 * 
 		 */		
@@ -426,7 +473,8 @@ package com.gamerisker.containers
 			}
 		}
 		
-		/**
+		/** 
+		 * @private
 		 *	verticalScrollPosition	值数据改变后调用该方法更新数据容器坐标
 		 * 
 		 */		
@@ -435,15 +483,13 @@ package com.gamerisker.containers
 			m_isTouching = true;
 			updatePosition();
 		}
-
-		/**
+		
+		/** 
+		 * @private
 		 *	更新滚动条坐标，显示容器坐标 
 		 * 
 		 */		
-		protected function updatePosition() : void
-		{
-
-		}
+		protected function updatePosition() : void{}
 		
 	}
 }

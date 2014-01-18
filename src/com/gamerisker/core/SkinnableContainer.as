@@ -1,18 +1,19 @@
 package com.gamerisker.core
 {
 	/**
-	 *	 SkinContainer : 含有skinInfo属性的显示对象基类
+	 * SkinnableContainer 类是具有可视内容的可设置外观容器的基类
 	 * @author YangDan
 	 */	
 	public class SkinnableContainer extends Component
 	{
+		/** @private */	
 		protected var m_skinInfo : Object;
 		
-		public function SkinnableContainer()
-		{
-			super();
-		}
+		public function SkinnableContainer(){}
 		
+		/**
+		 *	清除组件纹理。包括销毁纹理本身,不能销毁原始纹理集，否则会报空 
+		 */		
 		override public function Destroy():void
 		{
 			m_skinInfo = null;
@@ -20,6 +21,11 @@ package com.gamerisker.core
 			super.Destroy();
 		}
 		
+		/**
+		 *	设置皮肤内容
+		 * @return 
+		 * 
+		 */		
 		public function get skinInfo() : Object {return m_skinInfo;}
 		public function set skinInfo(value : Object) : void
 		{
@@ -34,6 +40,11 @@ package com.gamerisker.core
 			invalidate(INVALIDATION_FLAG_SKIN);
 		}
 		
+		/**
+		 *	获取当前皮肤名称,如果皮肤为设置则为null； 
+		 * @return 
+		 * 
+		 */		
 		public function get skin() : String
 		{
 			if(m_skinInfo && m_skinInfo.hasOwnProperty("name"))

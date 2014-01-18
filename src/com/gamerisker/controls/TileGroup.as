@@ -14,17 +14,40 @@ package com.gamerisker.controls
 	 */
 	public class TileGroup extends Component
 	{
+		/** @private */	
 		protected var m_imgList : Vector.<Tile>;
+		
+		/** @private */	
 		protected var m_boxWidth : int;
+		
+		/** @private */	
 		protected var m_boxHeight : int;
+		
+		/** @private */	
 		protected var m_hSpacing : int;
+		
+		/** @private */	
 		protected var m_vSpacing : int;
+		
+		/** @private */	
 		protected var m_hCount : int;
+		
+		/** @private */	
 		protected var m_vCount : int;
+		
+		/** @private */	
 		protected var m_list : Array;
+		
+		/** @private */	
 		protected var m_property : String;								//访问文理对象属性名
+		
+		/** @private */	
 		protected var m_count : int;
+		
+		/** @private */	
 		protected var m_selectedIndex : int = -1;
+		
+		/** @private */	
 		protected var m_selected : Boolean = true;					//获取或设置一个布尔值，指示列表中的项目是否可选。
 		
 		/**
@@ -33,7 +56,6 @@ package com.gamerisker.controls
 		 * 
 		 */		
 		public function get selectedIndex():int{return m_selectedIndex;}
-
 		public function set selectedIndex(value:int):void
 		{
 			if(m_selectedIndex != value)
@@ -49,7 +71,6 @@ package com.gamerisker.controls
 		 * 
 		 */		
 		public function set selectedItem(value : Object) : void{m_selectedIndex = m_list.indexOf(value);}
-		
 		public function get selectedItem() : Object
 		{
 			if(m_selectedIndex < 0 || m_selectedIndex > m_imgList.length)
@@ -73,20 +94,16 @@ package com.gamerisker.controls
 		}
 		
 		/**
-		 *	初始化ImageLoadGrid		 在设置数据前 请先设置提供的参数数据，因为没有默认值。
-		 * @param boxWidht		单元格宽度
-		 * @param boxHeight		单元格高度
-		 * @param count			单元格数量
-		 * @param h				竖向间距
-		 * @param v				横向间距
-		 * @param hCount		横向单元格数目
-		 * @param vCount		竖向单元格数目
+		 *	构造函数
 		 */		
 		public function TileGroup()
 		{
 			m_imgList = new Vector.<Tile>;
 		}
 		
+		/**
+		 *	清除组件纹理。包括销毁纹理本身,不能销毁原始纹理集，否则会报空 
+		 */		
 		override public function Destroy():void
 		{
 			var box : Tile;
@@ -120,9 +137,19 @@ package com.gamerisker.controls
 			}
 		}
 
+		/**
+		 *	无法设置宽度，该组件的宽度是内部 Tile 的宽度 计算出来 
+		 * @return 
+		 * 
+		 */		
 		override public function get width():Number{return (m_hCount * m_boxWidth) + (m_hSpacing * (m_hCount -1))};
 		override public function set width(w:Number):void{};
 		
+		/**
+		 *	无法设置高度，该组件的高度是内部 Tile 的高度 计算出来 
+		 * @return 
+		 * 
+		 */	
 		override public function get height():Number{return (m_vCount * m_boxHeight) + (m_vSpacing * (m_hCount -1))};
 		override public function set height(h:Number):void{};
 		
@@ -235,6 +262,7 @@ package com.gamerisker.controls
 			invalidate(INVALIDATION_FLAG_DATA);
 		}		
 		
+		/** @private */	
 		override protected function draw():void
 		{
 			const sizeInvalid : Boolean = isInvalid(INVALIDATION_FLAG_SIZE);
@@ -263,6 +291,7 @@ package com.gamerisker.controls
 			}
 		}
 		
+		/** @private */	
 		protected function refreshState() : void
 		{
 			var box : Tile;
@@ -288,6 +317,7 @@ package com.gamerisker.controls
 			}
 		}
 		
+		/** @private */	
 		protected function refreshSize() : void
 		{
 			var image : Tile;
@@ -308,6 +338,7 @@ package com.gamerisker.controls
 			}
 		}
 		
+		/** @private */	
 		protected function refreshLayout() : void
 		{
 			var leng : int = m_imgList.length;
@@ -339,6 +370,7 @@ package com.gamerisker.controls
 			}
 		}
 		
+		/** @private */	
 		protected function refreshData() : void
 		{
 			var image : Tile;
@@ -363,6 +395,7 @@ package com.gamerisker.controls
 			}
 		}
 
+		/** @private */	
 		private function clearSelected() : void
 		{
 			for(var i:int=0;i<m_imgList.length;i++)

@@ -14,16 +14,36 @@ package com.gamerisker.controls
 	 */	
 	public class Label extends Component
 	{
+		/** @private */	
 		protected var m_tf : TextField;
+		
+		/** @private */	
 		protected var m_lable : String;
+		
+		/** @private */	
 		protected var m_fontBold : Boolean = false;
+		
+		/** @private */	
 		protected var m_fontColor : uint = 0xffffff;
+		
+		/** @private */	
 		protected var m_align : String = "left";
+		
+		/** @private */	
 		protected var m_fontName : String = "Verdana";
+		
+		/** @private */	
 		protected var m_fontSize : int = 12;
 		
+		/**
+		 *	构造函数 
+		 * 
+		 */		
 		public function Label(){}
 		
+		/**
+		 *  清除组件纹理。包括销毁纹理本身,不能销毁原始纹理集，否则会报空
+		 */		
 		override public function Destroy():void
 		{
 			if(m_tf)
@@ -133,6 +153,7 @@ package com.gamerisker.controls
 			}
 		}
 		
+		/** @private */	
 		override protected function draw():void
 		{
 			const textInvalid : Boolean = isInvalid(INVALIDATION_FLAG_TEXT);
@@ -161,6 +182,7 @@ package com.gamerisker.controls
 			}
 		}
 		
+		/** @private */	
 		protected function refreshLayout() : void
 		{
 			if(m_tf.hAlign != m_align)
@@ -169,6 +191,7 @@ package com.gamerisker.controls
 			}
 		}
 		
+		/** @private */	
 		protected function refreshState() : void
 		{
 			if(m_tf.touchable != m_enabled)
@@ -177,6 +200,7 @@ package com.gamerisker.controls
 			}
 		}
 		
+		/** @private */	
 		protected function refreshSize() : void
 		{
 			if(m_tf.width != m_width)
@@ -190,6 +214,7 @@ package com.gamerisker.controls
 			}
 		}
 		
+		/** @private */	
 		protected function refreshText() : void
 		{
 			if(m_tf == null)
@@ -198,7 +223,12 @@ package com.gamerisker.controls
 				m_tf.autoSize = TextFieldAutoSize.VERTICAL;
 				addChildAt(m_tf,0);
 			}
-						
+			
+			if(m_tf.hAlign != m_align)
+			{
+				m_tf.hAlign = m_align;
+			}
+			
 			if(m_tf.text != m_lable)
 			{
 				m_tf.text = m_lable;

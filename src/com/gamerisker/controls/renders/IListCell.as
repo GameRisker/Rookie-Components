@@ -1,5 +1,10 @@
 package com.gamerisker.controls.renders
 {
+	/**
+	 * List 的 渲染接口
+	 * @author YangDan
+	 * 
+	 */	
 	public interface IListCell
 	{
 		function setData(value : Object) : void

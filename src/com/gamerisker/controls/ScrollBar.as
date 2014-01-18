@@ -21,24 +21,34 @@ package com.gamerisker.controls
 		
 		public static const VERTICAL : String = "vertical";
 		
+		/** @private */	
 		private static const DEFAULT_RADIUS : int = 6;
 		
+		/** @private */	
 		private static const DEFAULT_ALPHA : Number = 0.8;
 		
+		/** @private */	
 		private static const DEFAULT_COLOR : int = 0x666666;
 			
+		/** @private */	
 		protected var m_background : Image;
 		
+		/** @private */	
 		protected var m_scrollbarSize : int;							//滚动条大小
 		
+		/** @private */	
 		protected var m_direction : String = "vertical";
 
+		/** @private */	
 		protected var m_maxScrollPosition : Number = 0;
 
+		/** @private */	
 		protected var m_minScrollPosition : Number = 0;
 
+		/** @private */	
 		protected var m_scrollPosition : Number;
 
+		/** @private */	
 		protected var m_scrollbarTween : Tween;
 		
 		/**
@@ -123,8 +133,15 @@ package com.gamerisker.controls
 			}
 		}
 		
+		/**
+		 *	构造函数 
+		 * 
+		 */		
 		public function ScrollBar(){}
 		
+		/**
+		 *	清除组件纹理。包括销毁纹理本身,不能销毁原始纹理集，否则会报空  
+		 */		
 		override public function Destroy():void
 		{
 			removeChild(m_background);
@@ -134,6 +151,7 @@ package com.gamerisker.controls
 			super.Destroy();
 		}
 		
+		/** @private */	
 		override protected function draw():void
 		{
 			const skinInvalid : Boolean = isInvalid(INVALIDATION_FLAG_SKIN);
@@ -159,6 +177,7 @@ package com.gamerisker.controls
 			}
 		}
 		
+		/** @private */	
 		private function refreshState() : void
 		{	
 			if(m_maxScrollPosition > 0)
@@ -196,20 +215,28 @@ package com.gamerisker.controls
 		 */		
 		private function createScrollBar():void
 		{
-			if(!m_background)
+			if(m_scrollbarSize > 0)
 			{
-				m_background = new Image(getScrollBarBitmap(m_direction , m_scrollbarSize , DEFAULT_RADIUS));
-				addChildAt(m_background , 0);
-			}
-			else
-			{
-				if(m_scrollbarSize != 0 && m_background.width != m_scrollbarSize)
+				if(!m_background)
 				{
-					m_background.texture.dispose();
-					m_background.texture = getScrollBarBitmap(m_direction , m_scrollbarSize , DEFAULT_RADIUS);
+					m_background = new Image(getScrollBarBitmap(m_direction , m_scrollbarSize , DEFAULT_RADIUS));
+					addChildAt(m_background , 0);
 				}
+				else
+				{
+					if(m_scrollbarSize != 0 && m_background.width != m_scrollbarSize)
+					{
+						m_background.texture.dispose();
+						m_background.texture = getScrollBarBitmap(m_direction , m_scrollbarSize , DEFAULT_RADIUS);
+					}
+				}
+				m_background.readjustSize();
 			}
-			m_background.readjustSize();
+			else if(m_background)
+			{
+				m_background.texture.dispose();
+				removeChild(m_background);
+			}
 		}
 		
 		/**

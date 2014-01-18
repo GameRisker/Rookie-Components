@@ -1,6 +1,5 @@
 package com.gamerisker.controls
 {
-	
 	import com.gamerisker.core.Component;
 	import com.gamerisker.core.SkinnableContainer;
 	
@@ -9,17 +8,40 @@ package com.gamerisker.controls
 
 	/**
 	 *	Button	基础类 
+	 * <br>纹理集合{	"skin" : 皮肤名称,
+	 * 				"upSkin" : 按钮弹起皮肤,
+	 * 			   	"downSkin" : 按钮按下皮肤,
+	 *             	"disabledSkin" : 按钮禁用皮肤,
+	 * 				"scale9GridX" : 9宫格X坐标,
+	 * 				"scale9GridY" : 9宫格Y坐标,
+	 * 				"scale9GridWidth" : 9宫格宽度,
+	 * 				"scale9GridHeight" : 9宫格高度,
+	 * 				"skinParent" : 皮肤父纹理集合
+	 * 				}
 	 * @author YangDan
 	 * 
 	 */	
 	public class BaseButton extends SkinnableContainer
 	{
+		/** @private */	
 		protected static const MAX_DRAG_DIST	: Number = 50;
+		
+		/** @private */	
 		protected var m_upState 				: Texture;
+		
+		/** @private */	
 		protected var m_downState 				: Texture;
+		
+		/** @private */	
 		protected var m_disabledState 			: Texture;
+		
+		/** @private */	
 		protected var m_isToggle 				: Boolean;
+		
+		/** @private */	
 		protected var m_isDown 				: Boolean;
+		
+		/** @private */	
 		protected var m_selected 				: Boolean = false;
 
 		/**
@@ -111,11 +133,17 @@ package com.gamerisker.controls
 		public function set toggle(value : Boolean) : void{m_isToggle = value;}
 		public function get toggle() : Boolean{return m_isToggle;}
 		
+		/**
+		 *	构造函数 
+		 */		
 		public function BaseButton()
 		{
 			this.addEventListener(TouchEvent.TOUCH , onTouchEvent);
 		}
 		
+		/**
+		 *	清除组件纹理。包括销毁纹理本身,不能销毁原始纹理集，否则会报空 
+		 */		
 		override public function Destroy():void
 		{
 			this.removeEventListener(TouchEvent.TOUCH , onTouchEvent);
@@ -131,6 +159,7 @@ package com.gamerisker.controls
 			super.Destroy();
 		}
 		
+		/** @private */	
 		protected function onTouchEvent(event : TouchEvent) : void{}
 	}
 }

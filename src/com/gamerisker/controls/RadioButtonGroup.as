@@ -11,16 +11,28 @@ package com.gamerisker.controls
 	 */	
 	public class RadioButtonGroup extends EventDispatcher
 	{
-		private static var EventHandler : EventDispatcher = new EventDispatcher();
+		/** @private */	
 		private var m_group : Array;
+
+		/** @private */	
 		private var m_currentbutton : RadioButton;
+		
+		/** @private */	
 		protected var m_groupName : String = "defulatname";
 		
+		/**
+		 *	构造函数 
+		 */		
 		public function RadioButtonGroup()
 		{
 			m_group = new Array;	
 		}
 		
+		/**
+		 *	将按钮添加进管理组 
+		 * @param button
+		 * 
+		 */		
 		public function addButton(button : RadioButton) : void
 		{
 			for(var i : int=0;i<m_group.length;i++)
@@ -33,6 +45,11 @@ package com.gamerisker.controls
 			m_group.push(button);
 		}
 		
+		/**
+		 *	将按钮删除管理组
+		 * @param button
+		 * 
+		 */		
 		public function removeButton(button : RadioButton) : void
 		{
 			for(var i : int =0;i<m_group.length ; i++)
@@ -45,6 +62,7 @@ package com.gamerisker.controls
 			}
 		}
 
+		/** @private */	
 		private function callFunction(button : RadioButton) : void
 		{
 			for(var i:int=0;i<m_group.length;i++)

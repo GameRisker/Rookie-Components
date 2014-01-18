@@ -20,28 +20,43 @@ package com.gamerisker.controls
 	 */	
 	public class List extends BaseScrollPane
 	{
+		/** @private */	
 		protected static const INVALIDATION_FLAG_SCROLLBAR : String = "scrollbar";
 		
+		/** @private */	
 		protected var m_activeCellRenderers : Vector.<IListCell>;							//活动的渲染器数组
 		
+		/** @private */	
 		protected var m_rowHeight : Number = 20;											//Cell的高度	本身高度加间隔高度
 		
+		/** @private */	
 		protected var m_rowCount : int;													//最少可见列数
 		
+		/** @private */	
 		protected var m_hCount : int;
 		
+		/** @private */	
 		private var m_cellClass : Class;
 		
+		/** @private */	
 		private var m_listData : Array;
 		
+		/** @private */	
 		private var m_maxCount : int;														//LIST最大保存数据条数
-						
+			
+		/** @private */	
 		private var m_preciousTouchTime : Number;
 		
+		/** @private */	
 		private var m_selectedIndex : int = -1;
 		
+		/** @private */	
 		private var m_selected : Boolean = true;
 
+		/**
+		 *	构造函数 
+		 * 
+		 */		
 		public function List()
 		{
 			m_maxCount = int.MAX_VALUE;
@@ -49,6 +64,9 @@ package com.gamerisker.controls
 			m_background = new Sprite;
 		}
 		
+		/**
+		 *	清除组件纹理。包括销毁纹理本身,不能销毁原始纹理集，否则会报空 
+		 */		
 		override public function Destroy():void
 		{
 			clearCell();
@@ -67,7 +85,6 @@ package com.gamerisker.controls
 		 * 
 		 */
 		public function get selected():Boolean{return m_selected;}
-		
 		public function set selected(value:Boolean):void
 		{
 			if(m_selected != value)
@@ -180,6 +197,7 @@ package com.gamerisker.controls
 			}
 		}
 		
+		/** @private */	
 		override protected function draw():void
 		{
 			super.draw();
@@ -220,6 +238,7 @@ package com.gamerisker.controls
 			}
 		}
 		
+		/** @private */	
 		protected function refreshState() : void
 		{
 			var index: int = -1;
@@ -236,6 +255,7 @@ package com.gamerisker.controls
 			dispatchEventWith(ComponentEvent.LIST_ITEM_SELECTED , false , cell.data);
 		}
 		
+		/** @private */	
 		override protected function refreshSize():void
 		{
 			super.refreshSize();
@@ -243,6 +263,7 @@ package com.gamerisker.controls
 			m_rowCount = Math.ceil(m_scrollRect.height / m_rowHeight);
 		}
 		
+		/** @private */	
 		protected function refreshSkin() : Boolean
 		{
 			var startIndex : int = Math.floor(0 / m_rowHeight);
@@ -264,6 +285,7 @@ package com.gamerisker.controls
 			return false;
 		}
 		
+		/** @private */	
 		protected function refreshLayout() : void
 		{
 			var cell : *;
@@ -274,6 +296,7 @@ package com.gamerisker.controls
 			}
 		}
 		
+		/** @private */	
 		protected function refreshData() : void
 		{
 			m_hCount = m_listData.length;
@@ -294,48 +317,7 @@ package com.gamerisker.controls
 			this.finishScrollingVertically();
 		}
 		
-		/**
-		 *	清理Cell 
-		 * 
-		 */		
-		private function clearCell() : void
-		{
-			var cell : *;
-			while(m_background.numChildren > 0)
-			{
-				cell = m_background.removeChildAt(0);
-				cell = null;
-			}
-			
-			for(var i:int=0;i<m_activeCellRenderers.length;i++)
-			{
-				cell = m_activeCellRenderers[i];
-				cell.removeEventListener(TouchEvent.TOUCH , onItemSelected);
-				cell.Destroy();
-			}
-			
-			m_activeCellRenderers.length = 0;
-		}
-		
-		/**
-		 *	选中		Item  
-		 * @param event
-		 * 
-		 */		
-		private function onItemSelected(event : TouchEvent) : void
-		{
-			if(!m_isTouching)
-			{
-				var touch : Touch = event.getTouch(this,TouchPhase.ENDED);
-				
-				if(!touch)
-					return;
-				
-				m_selectedIndex = m_listData.indexOf(event.currentTarget["data"]);
-				invalidate(INVALIDATION_FLAG_STATE);
-			}
-		}
-		
+		/** @private */	
 		override protected function onChangePosition():void
 		{
 			super.onChangePosition();
@@ -343,6 +325,7 @@ package com.gamerisker.controls
 			updateCell();
 		}
 		
+		/** @private */	
 		override protected function updatePosition():void
 		{
 			var _verticalScrollPosition : Number = m_topViewPortOffset - verticalScrollPosition;
@@ -396,6 +379,47 @@ package com.gamerisker.controls
 				cell.y = m_rowHeight*(i-startIndex);
 				m_background.addChild(cell);
 				index++;
+			}
+		}
+		
+		/**
+		 *	清理Cell 
+		 */		
+		private function clearCell() : void
+		{
+			var cell : *;
+			while(m_background.numChildren > 0)
+			{
+				cell = m_background.removeChildAt(0);
+				cell = null;
+			}
+			
+			for(var i:int=0;i<m_activeCellRenderers.length;i++)
+			{
+				cell = m_activeCellRenderers[i];
+				cell.removeEventListener(TouchEvent.TOUCH , onItemSelected);
+				cell.Destroy();
+			}
+			
+			m_activeCellRenderers.length = 0;
+		}
+		
+		/**
+		 *	选中		Item  
+		 * @param event
+		 * 
+		 */		
+		private function onItemSelected(event : TouchEvent) : void
+		{
+			if(!m_isTouching)
+			{
+				var touch : Touch = event.getTouch(this,TouchPhase.ENDED);
+				
+				if(!touch)
+					return;
+				
+				m_selectedIndex = m_listData.indexOf(event.currentTarget["data"]);
+				invalidate(INVALIDATION_FLAG_STATE);
 			}
 		}
 	}

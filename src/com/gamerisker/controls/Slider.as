@@ -18,19 +18,43 @@ package com.gamerisker.controls
 	 * <br>通过使用 Slider 组件，用户可以在滑块轨道的端点之间移动滑块来选择值。 
 	 * Slider 组件的当前值由滑块端点之间滑块的相对位置确定，
 	 * 端点对应于 Slider 组件的 minimum 和 maximum 值。 
-	 * 
+	 * {
+	 * 	 "skin": 皮肤名称
+	 *   "upSkin" : 按钮弹起状态皮肤
+	 *   "downSkin" : 按钮下去状态皮肤
+	 *   "background" : 组件背景
+	 *   "scale9GridX" :  9宫格X坐标, 
+	 *   "scale9GridY" : 9宫格Y坐标,
+	 *   "scale9GridWidth" : 9宫格宽度,
+	 *   "scale9GridHeight" : 9宫格高度,
+	 *   "skinParent" : 皮肤父纹理集合
+	 * }
 	 * @author YangDan
 	 * 
 	 */	
 	public class Slider extends SkinnableContainer
 	{
+		/** @private */	
 		private var m_background : Scale9Image;
+		
+		/** @private */	
 		private var m_thumb : Thumb;
+		
+		/** @private */	
 		private var m_startPoint : Number;
+		
+		/** @private */	
 		private var m_maximum : Number = 100;
+		
+		/** @private */	
 		private var m_minimum : Number = 0;
+		
+		/** @private */	
 		private var m_value : int;
 		
+		/**
+		 *	构造函数 
+		 */		
 		public function Slider()
 		{
 			addEventListener(TouchEvent.TOUCH , onTouchEvent);
@@ -52,10 +76,11 @@ package com.gamerisker.controls
 		}
 		
 		/**
-		 *	 height 高度无法设置
+		 *	 height 高度无法设置，可获取高度
 		 * @return 
 		 * 
 		 */		
+		override public function set height(value:Number):void{}
 		override public function get height():Number
 		{
 			if(m_background && m_thumb)
@@ -66,20 +91,11 @@ package com.gamerisker.controls
 		}
 		
 		/**
-		 *	 
-		 * @param value
-		 * 
-		 */		
-		override public function set height(value:Number):void{}
-		
-		
-		/**
 		 *	获取或设置 Slider 组件的当前值。 
 		 * @return 
 		 * 
 		 */		
 		public function get value() : int{return m_value;}
-		
 		public function set value(val : int) : void
 		{
 			if(m_value != val)
@@ -95,7 +111,6 @@ package com.gamerisker.controls
 		 * 
 		 */		
 		public function get maximum() : Number{return m_maximum;}
-		
 		public function set maximum(value : Number) : void{m_maximum = value;}
 		
 		/**
@@ -104,10 +119,10 @@ package com.gamerisker.controls
 		 * 
 		 */		
 		public function get minimum():Number{return m_minimum;}
-		
 		public function set minimum(value:Number):void{m_minimum = value;}
 
-		
+
+		/** @private */	
 		override protected function draw():void
 		{
 			const skinInvalid : Boolean = isInvalid(INVALIDATION_FLAG_SKIN);

@@ -17,10 +17,19 @@ package com.gamerisker.controls
 	 */	
 	public class Tile extends Component
 	{
+		/** @private */	
 		private var m_background : Image;
+		
+		/** @private */	
 		private var m_data : Object;
+		
+		/** @private */	
 		private var m_filter:ColorMatrixFilter;
+		
+		/** @private */	
 		private var m_name : String;
+		
+		/** @private */	
 		private var m_selected : Boolean = false;
 
 		/**
@@ -28,11 +37,7 @@ package com.gamerisker.controls
 		 * @return 
 		 * 
 		 */		
-		public function get selected():Boolean
-		{
-			return m_selected;
-		}
-
+		public function get selected():Boolean{return m_selected;}
 		public function set selected(value:Boolean):void
 		{
 			if(m_selected != value)
@@ -71,11 +76,18 @@ package com.gamerisker.controls
 			}
 		}
 		
+		/**
+		 *	构造函数 
+		 * 
+		 */		
 		public function Tile()
 		{
 			addEventListener(TouchEvent.TOUCH , onTouchEvent);
 		}
 		
+		/**
+		 *	清除组件纹理。包括销毁纹理本身,不能销毁原始纹理集，否则会报空 
+		 */		
 		override public function Destroy():void
 		{
 			if(m_background)
@@ -97,6 +109,7 @@ package com.gamerisker.controls
 			super.Destroy();
 		}
 				
+		/** @private */	
 		override protected function draw():void
 		{
 			const skinInvalid : Boolean = isInvalid(INVALIDATION_FLAG_SKIN);
@@ -119,6 +132,7 @@ package com.gamerisker.controls
 			}
 		}
 		
+		/** @private */	
 		protected function refreshState() : void
 		{
 			if(touchable != m_enabled)
@@ -130,6 +144,7 @@ package com.gamerisker.controls
 				setFilter(m_selected);
 		}
 		
+		/** @private */	
 		protected function refreshSkin() : void
 		{
 			if(m_data.hasOwnProperty(m_name))
@@ -146,6 +161,7 @@ package com.gamerisker.controls
 			}
 		}
 		
+		/** @private */	
 		protected function refreshSize() : void
 		{
 			if(m_background.width != m_width)
@@ -172,6 +188,7 @@ package com.gamerisker.controls
 			}
 		}
 		
+		/** @private */	
 		private function onTouchEvent(event : TouchEvent) : void
 		{
 			var touch : Touch = event.getTouch(this);
@@ -184,6 +201,7 @@ package com.gamerisker.controls
 			}
 		}
 		
+		/** @private */	
 		private function setFilter(value : Boolean) : void
 		{
 			if(!m_background)

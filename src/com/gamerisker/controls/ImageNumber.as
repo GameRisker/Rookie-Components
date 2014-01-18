@@ -8,22 +8,47 @@ package com.gamerisker.controls
 
 	/**
 	 *	图片数字 
+	 * 皮肤设置
 	 * @author YangDan
-	 * 
+	 * {
+	 *  	"skin" : 皮肤名称 （是一个数字集合）
+	 *      "skinParent" : 皮肤父纹理集合
 	 */	
 	public class ImageNumber extends SkinnableContainer
 	{
+		/** @private */	
 		private var m_Textures : Vector.<Texture>;
+		
+		/** @private */	
 		private var m_imageList : Vector.<Image>;				//位图资源存储器
+		
+		/** @private */	
 		private var m_totalWidth : int;
+		
+		/** @private */	
 		private var m_distance : int;
+		
+		/** @private */	
 		private var m_digit : int;
+		
+		/** @private */	
 		private var m_num : int;
+		
+		/** @private */	
 		private var m_isBool : Boolean = true;				//是否数字前显示 0
+		
+		/** @private */	
 		private var m_numString : String;						//数字转换为最后显示字符串
 		
+		/**
+		 *	构造函数 
+		 * 
+		 */		
 		public function ImageNumber(){}
 		
+		/**
+		 *	清除组件纹理。包括销毁纹理本身,不能销毁原始纹理集，否则会报空   
+		 */		
 		override public function Destroy():void
 		{
 			var i:int;
@@ -61,14 +86,19 @@ package com.gamerisker.controls
 		}
 		
 		/**
-		 *	没有设置素材前。没有宽度 
-		 * @param w
+		 *	没有设置素材前,没有宽度.无法设置宽度 
+		 * @param value
 		 * 
 		 */		
-		override public function set width(w:Number):void{};
+		override public function set width(value:Number):void{};
 		override public function get width():Number{return m_totalWidth}
 		
-		override public function set height(h:Number):void{};
+		/**
+		 *	 没有设置素材前,没有高度.无法设置高度 
+		 * @param value
+		 * 
+		 */		
+		override public function set height(value:Number):void{};
 		override public function get height():Number{return m_height}
 		
 		/**
@@ -102,7 +132,7 @@ package com.gamerisker.controls
 		}
 		
 		/**
-		 *	间隔 
+		 *	两个数字之间的间隔 
 		 * @return 
 		 * 
 		 */		
@@ -116,6 +146,11 @@ package com.gamerisker.controls
 			}
 		}
 		
+		/**
+		 *	设置组件的纹理集 
+		 * @param value
+		 * 
+		 */		
 		override public function set skinInfo(value:Object):void
 		{
 			if(value == null)
@@ -130,6 +165,7 @@ package com.gamerisker.controls
 			invalidate(INVALIDATION_FLAG_SKIN);
 		}
 		
+		/** @private */	
 		override protected function draw():void
 		{
 			const skinInvalid : Boolean = isInvalid(INVALIDATION_FLAG_SKIN);
@@ -158,6 +194,7 @@ package com.gamerisker.controls
 			}
 		}
 		
+		/** @private */	
 		protected function refreshState() : void
 		{
 			if(touchable != m_enabled)
@@ -166,6 +203,7 @@ package com.gamerisker.controls
 			}
 		}
 		
+		/** @private */	
 		protected function refreshData() : void
 		{
 			m_numString  = String(m_num);
@@ -201,6 +239,7 @@ package com.gamerisker.controls
 			}
 		}
 		
+		/** @private */	
 		protected function refreshSkin() : void
 		{
 			var numString : String = m_numString;
@@ -229,6 +268,7 @@ package com.gamerisker.controls
 			}
 		}
 		
+		/** @private */	
 		protected function refreshSize() : void
 		{
 			m_totalWidth = 0;
@@ -242,6 +282,7 @@ package com.gamerisker.controls
 			m_height = m_imageList[0].height;
 		}
 		
+		/** @private */	
 		protected function removeNum(num : int , leng : int) : void
 		{
 			var image : Image;

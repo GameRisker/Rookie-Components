@@ -11,6 +11,10 @@ package com.gamerisker.controls
 	{
 		private var m_group : Array;
 		
+		/**
+		 *	构造函数 
+		 * 
+		 */		
 		public function CheckBoxGroup()
 		{
 			m_group = new Array;

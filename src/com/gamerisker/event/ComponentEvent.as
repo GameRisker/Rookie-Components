@@ -1,7 +1,11 @@
 package com.gamerisker.event
 {
 	
-
+	/**
+	 *	组件事件 
+	 * @author YangDan
+	 * 
+	 */
 	public class ComponentEvent
 	{
 		/**

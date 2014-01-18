@@ -18,68 +18,91 @@ package com.gamerisker.containers
 	import starling.textures.Texture;
 
 	/**
-	 *	弹出框 
+	 * 弹出框 
+	 * 	{	
+	 * 		"skin" : 皮肤名称,
+	 * 		"scale9GridX" : 9宫格X坐标,
+	 * 		"scale9GridY" : 9宫格Y坐标,
+	 * 		"scale9GridWidth" : 9宫格宽度,
+	 * 		"scale9GridHeight" : 9宫格高度,
+	 * 		"textboundsX" : 弹出框title的X坐标,
+	 * 		"textboundsY" : 弹出框title的Y坐标,
+	 * 		"textboundsW" : 弹出框title的宽度,
+	 * 		"textboundsH" : 弹出框title的高度,
+	 * 		"skinParent" : 皮肤父纹理集合
+	 *	}
 	 * @author YangDan
-	 * 
 	 */	
 	public class TitleWindow extends SkinnableContainer
 	{
 		/**
+		 * @private
 		 *	弹出框	背景容器 
 		 */		
 		protected var m_background : Scale9Image;
 		
 		/**
+		 * @private
 		 *	弹出框	标题文本 
 		 */		
 		protected var m_textField : TextField;
 		
 		/**
+		 * @private
 		 *	弹出框	标题文本 属性 
 		 */		
 		protected var m_textBounds	: Rectangle;
 		
 		/**
+		 * @private
 		 *	弹出框	关闭按钮 
 		 */		
 		protected var m_closeButton : CloseButton;
 		
 		/**
+		 * @private
 		 *	弹出框	标题 
 		 */		
 		protected var m_title : String;
 		
 		/**
+		 * @private
 		 *	弹出框	标题字体大小 
 		 */		
 		protected var m_fontSize : int;
 		
 		/**
+		 * @private
 		 *	弹出框	标题文本 X 坐标 
 		 */		
 		protected var m_textX : int;
 		
 		/**
+		 * @private
 		 *	弹出框	标题文本 Y 坐标 
 		 */		
 		protected var m_textY : int;
 		
 		/**
+		 * @private
 		 *	弹出框	标题文本	宽度 
 		 */		
 		protected var m_textWidth : int;
 		
 		/**
+		 * @private
 		 *	弹出框	标题文本	高度 
 		 */		
 		protected var m_textHeight : int;
 		
 		/**
 		 *	构造函数 
-		 * 
 		 */		
 		public function TitleWindow(){}
 		
+		/**
+		 *	清除组件纹理。包括销毁纹理本身,不能销毁原始纹理集，否则会报空  
+		 */		
 		override public function Destroy():void
 		{
 			if(m_textField)
@@ -188,6 +211,7 @@ package com.gamerisker.containers
 			}
 		}
 		
+		/** @private */	
 		override protected function draw():void
 		{
 			const skinInvalid : Boolean = isInvalid(INVALIDATION_FLAG_SKIN);
@@ -217,6 +241,7 @@ package com.gamerisker.containers
 		}
 		
 		/**
+		 * @private
 		 *	刷新状态 
 		 * 
 		 */		
@@ -229,6 +254,7 @@ package com.gamerisker.containers
 		}
 		
 		/**
+		 * @private
 		 *	刷新组建大小 
 		 * 
 		 */		
@@ -253,6 +279,7 @@ package com.gamerisker.containers
 		}
 		
 		/**
+		 * @private
 		 *	刷新TitleWindow	Title 
 		 * 
 		 */		
@@ -298,9 +325,15 @@ package com.gamerisker.containers
 			{
 				m_textField.text = m_title;
 			}
+			
+			if(m_fontSize != m_textField.fontSize)
+			{
+				m_textField.fontSize = m_fontSize;
+			}
 		}
 		
 		/**
+		 * @private
 		 *	刷新TitleWindow	Skin 
 		 * 
 		 */		
@@ -329,8 +362,8 @@ package com.gamerisker.containers
 		}
 	}
 }
-import flash.geom.Rectangle;
 
+import flash.geom.Rectangle;
 import starling.display.Image;
 import starling.display.Sprite;
 import starling.events.Touch;
