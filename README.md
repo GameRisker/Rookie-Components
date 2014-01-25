@@ -1,4 +1,4 @@
-Rookie-Components
+﻿Rookie-Components
 =================
 
 什么是 Rookie Components ?
@@ -21,3 +21,9 @@ Rookie Components 是一套基于Starling的UI组件，主要借鉴flash compone
 联系方式
 --------
 邮箱：8480136@qq.com
+
+实例地址：
+--------
+[RookieEditor 编辑出来的文件如何在项目中使用][2]
+[2]:http://blog.gamerisker.com/?p=207
+
