@@ -137,7 +137,7 @@ package com.gamerisker.controls
 		 */		
 		public function get selectedItem() : Object
 		{
-			if(m_selectedIndex > m_listData.length)
+			if(m_selectedIndex < m_listData.length && m_selectedIndex > -1)
 				return m_listData[m_selectedIndex];
 			else
 				return null;
@@ -167,7 +167,6 @@ package com.gamerisker.controls
 		/**
 		 *	设置List数据 
 		 * @param value
-		 * @param reset	滑动条是否归位	false:不归位
 		 */		
 		public function get dataProvider() : Array{return m_listData;}
 		public function set dataProvider(value : Array) : void
@@ -243,16 +242,20 @@ package com.gamerisker.controls
 		{
 			var index: int = -1;
 			var cell : *;
+			var selCell : *;
+			
 			for each(cell in m_activeCellRenderers)
 			{
 				if(cell.data != null)
 				{
 					index = m_listData.indexOf(cell.data);
 					cell.selected = m_selected && (index == m_selectedIndex);
+					if(cell.selected)selCell = cell;
 				}
 			}
 			
-			dispatchEventWith(ComponentEvent.LIST_ITEM_SELECTED , false , cell.data);
+			if(m_selectedIndex != -1 && selCell!=null)
+				dispatchEventWith(ComponentEvent.LIST_ITEM_SELECTED , false , selCell.data);
 		}
 		
 		/** @private */	

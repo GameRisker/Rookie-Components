@@ -31,9 +31,6 @@ package com.gamerisker.controls
 		private var m_group : String;
 		
 		/** @private */	
-		private var m_RadioButtonGroup : RadioButtonGroup;
-		
-		/** @private */	
 		private var m_label : String;
 		
 		/** @private */	
@@ -98,13 +95,6 @@ package com.gamerisker.controls
 		}
 		
 		/**
-		 *	此 RadioButton 所属的 RadioButtonGroup 对象。 
-		 * @param group
-		 * 
-		 */		
-		public function set radioButtonGroup(group : RadioButtonGroup) : void{m_RadioButtonGroup = group;}
-		
-		/**
 		 *	该方法提供给 RadioButtonGroup调用，用来设置按钮属性 
 		 * @param fun
 		 * 
@@ -139,9 +129,8 @@ package com.gamerisker.controls
 		 */		
 		override public function Destroy():void
 		{
-			m_RadioButtonGroup.removeButton(this);
+			RadioButtonGroup.getInstance().removeButton(this);
 			m_callfunction = null;
-			m_RadioButtonGroup = null;
 			m_data = null;
 			if(m_textField)
 			{

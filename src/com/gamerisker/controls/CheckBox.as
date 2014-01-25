@@ -24,10 +24,7 @@ package com.gamerisker.controls
 		
 		/** @private */	
 		private var m_group : String = "CheckBoxGroup";
-		
-		/** @private */	
-		private var m_CheckBoxGroup : CheckBoxGroup;
-		
+				
 		/** @private */	
 		private var m_lable : String;	
 		
@@ -51,12 +48,11 @@ package com.gamerisker.controls
 				m_textField.dispose();
 			}
 			
-			m_CheckBoxGroup.removeButton(this);
+			CheckBoxGroup.getInstance().removeButton(this);
 			
 			m_callfunction = null;
 			m_data = null;
 			m_textField = null;
-			m_CheckBoxGroup = null;
 			super.Destroy();
 		}
 		
@@ -105,11 +101,6 @@ package com.gamerisker.controls
 		public function get group():String{return m_group;}
 		public function set group(value:String):void{m_group = value;}
 		
-		/**
-		 *	设置CheckBoxGrop 的引用 
-		 * @param value
-		 */		
-		public function set checkBoxGroup(value : CheckBoxGroup) : void{m_CheckBoxGroup = value;}
 		
 		/** @private */	
 		override protected function draw():void

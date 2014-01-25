@@ -12,7 +12,7 @@ package com.gamerisker.controls
 	public class RadioButtonGroup extends EventDispatcher
 	{
 		/** @private */	
-		private var m_group : Array;
+		private var m_group : Vector.<RadioButton>;
 
 		/** @private */	
 		private var m_currentbutton : RadioButton;
@@ -20,12 +20,22 @@ package com.gamerisker.controls
 		/** @private */	
 		protected var m_groupName : String = "defulatname";
 		
+		private static var m_instance : RadioButtonGroup;
+		
 		/**
 		 *	构造函数 
 		 */		
 		public function RadioButtonGroup()
 		{
-			m_group = new Array;	
+			m_group = new Vector.<RadioButton>;
+		}
+		
+		public static function getInstance() : RadioButtonGroup
+		{
+			if(m_instance)
+				return m_instance;
+			
+			return m_instance = new RadioButtonGroup();
 		}
 		
 		/**
@@ -35,12 +45,9 @@ package com.gamerisker.controls
 		 */		
 		public function addButton(button : RadioButton) : void
 		{
-			for(var i : int=0;i<m_group.length;i++)
-			{
-				if(m_group[i] == button)
-					return;
-			}
-			button.radioButtonGroup = this;
+			if(m_group.indexOf(button) > -1)
+				return;
+			
 			button.addListener(callFunction);
 			m_group.push(button);
 		}
@@ -52,13 +59,11 @@ package com.gamerisker.controls
 		 */		
 		public function removeButton(button : RadioButton) : void
 		{
-			for(var i : int =0;i<m_group.length ; i++)
+			var index : int = m_group.indexOf(button);
+			
+			if(index > -1)
 			{
-				if(m_group[i]==button)
-				{
-					button.radioButtonGroup = null;
-					m_group.splice(i,1);
-				}
+				m_group.splice(index,1);
 			}
 		}
 

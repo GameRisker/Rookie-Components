@@ -9,15 +9,21 @@ package com.gamerisker.controls
 	 */	
 	public class CheckBoxGroup extends EventDispatcher
 	{
-		private var m_group : Array;
+		private var m_group : Vector.<CheckBox> = new Vector.<CheckBox>;
+		private static var m_instance : CheckBoxGroup;
 		
 		/**
 		 *	构造函数 
 		 * 
 		 */		
-		public function CheckBoxGroup()
+		public function CheckBoxGroup(){}
+		
+		public static function getInstance() : CheckBoxGroup
 		{
-			m_group = new Array;
+			if(m_instance)
+				return m_instance;
+			
+			return m_instance = new CheckBoxGroup();
 		}
 		
 		/**
@@ -27,12 +33,9 @@ package com.gamerisker.controls
 		 */		
 		public function addButton(button : CheckBox) : void
 		{
-			for(var i : int=0;i<m_group.length;i++)
-			{
-				if(m_group[i] == button)
-					return;
-			}
-			button.checkBoxGroup = this;
+			if(m_group.indexOf(button) > -1)
+				return;
+			
 			button.addListener(callFunction);
 			m_group.push(button);
 		}
@@ -44,13 +47,11 @@ package com.gamerisker.controls
 		 */		
 		public function removeButton(button : CheckBox) : void
 		{
-			for(var i : int =0;i<m_group.length ; i++)
+			var index : int = m_group.indexOf(button);
+			
+			if(index > -1)
 			{
-				if(m_group[i]==button)
-				{
-					button.checkBoxGroup = null;
-					m_group.splice(i,1);
-				}
+				m_group.splice(index,1);
 			}
 		}
 		
