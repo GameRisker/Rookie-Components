@@ -25,5 +25,7 @@ Rookie Components 是一套基于Starling的UI组件，主要借鉴flash compone
 实例地址：
 --------
 [RookieEditor 编辑出来的文件如何在项目中使用][2]
-[2]:http://blog.gamerisker.com/?p=207
+[如何为 RookieEditor 添加自定义皮肤][3]
 
+[2]:http://blog.gamerisker.com/?p=207
+[3]:http://blog.gamerisker.com/?p=217
