@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with TexturePacker http://texturepacker.com-->
+<!--  -->
+<TextureAtlas imagePath="RookieEditor.png">
+    <SubTexture name="chat_liaotiankuang" x="934" y="45" width="42" height="114"/>
+    <SubTexture name="close_down" x="978" y="114" width="37" height="38"/>
+    <SubTexture name="close_up" x="978" y="74" width="37" height="38"/>
+    <SubTexture name="default_beijing" x="2" y="2" width="621" height="265"/>
+    <SubTexture name="default_button1_down" x="625" y="123" width="91" height="36"/>
+    <SubTexture name="default_button1_up" x="841" y="91" width="91" height="36"/>
+    <SubTexture name="default_button2_down" x="841" y="53" width="91" height="36"/>
+    <SubTexture name="default_button2_up" x="841" y="15" width="91" height="36"/>
+    <SubTexture name="default_yinxiao_down" x="625" y="69" width="214" height="52" frameX="0" frameY="0" frameWidth="222" frameHeight="52"/>
+    <SubTexture name="default_yinxiao_up" x="625" y="15" width="214" height="52" frameX="0" frameY="0" frameWidth="222" frameHeight="52"/>
+    <SubTexture name="laba" x="937" y="2" width="47" height="41" frameX="0" frameY="-4" frameWidth="47" frameHeight="47"/>
+    <SubTexture name="mail_lihe" x="978" y="154" width="32" height="34"/>
+    <SubTexture name="num_0" x="890" y="129" width="14" height="20"/>
+    <SubTexture name="num_1" x="1012" y="154" width="10" height="20" frameX="-2" frameY="0" frameWidth="14" frameHeight="20"/>
+    <SubTexture name="num_2" x="874" y="129" width="14" height="20"/>
+    <SubTexture name="num_3" x="858" y="129" width="14" height="20"/>
+    <SubTexture name="num_4" x="842" y="129" width="14" height="20"/>
+    <SubTexture name="num_5" x="826" y="129" width="14" height="20"/>
+    <SubTexture name="num_6" x="810" y="123" width="14" height="20"/>
+    <SubTexture name="num_7" x="794" y="123" width="14" height="20"/>
+    <SubTexture name="num_8" x="778" y="123" width="14" height="20"/>
+    <SubTexture name="num_9" x="762" y="123" width="14" height="20"/>
+    <SubTexture name="silderbg" x="625" y="2" width="310" height="11"/>
+    <SubTexture name="slider_down" x="986" y="38" width="32" height="34"/>
+    <SubTexture name="slider_up" x="986" y="2" width="32" height="34"/>
+    <SubTexture name="xiangxiang_down" x="740" y="123" width="20" height="20"/>
+    <SubTexture name="xiangxiang_up" x="718" y="123" width="20" height="20"/>
+</TextureAtlas>

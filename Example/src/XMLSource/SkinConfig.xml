@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SkinConfig>
+	<ImageButton skin="close" upSkin="close_up" downSkin="close_down" disabledSkin="close_down" skinParent="Default_Main"/>
+	<ImageButton skin="zhucezhanghao" upSkin="zhucezhanghao_up" downSkin="zhucezhanghao_down" disabledSkin="zhucezhanghao_down" skinParent="Default_Example"/>
+	<!--默认资源-->
+	<Button skin="default_button1" upSkin="default_button1_up" downSkin="default_button1_down" disabledSkin="default_button1_down" scale9GridX="22" scale9GridY="12" scale9GridWidth="40" scale9GridHeight="12" skinParent="Default_Main"/>
+	<Button skin="default_button2" upSkin="default_button2_up" downSkin="default_button2_down" disabledSkin="default_button2_down" scale9GridX="22" scale9GridY="12" scale9GridWidth="40" scale9GridHeight="12" skinParent="Default_Main"/>
+	
+	
+	<TitleWindow skin="default_beijing" closeUpSkin="close_up" closeDownSkin="close_down" closeX="-10" closeY="5" scale9GridX="64" scale9GridY="60" scale9GridWidth="130" scale9GridHeight="35" textboundsX="0" textboundsY="0" textboundsW="120" textboundsH="24" skinParent="Default_Main"/>
+	
+	<RadioButton skin="RadioButtonDefault" upSkin="xiangxiang_up" downSkin="xiangxiang_down" skinParent="Default_Main"/>
+	<Slider skin="SliderDefault" upSkin="slider_up" downSkin="slider_down" background="silderbg" scale9GridX="80" scale9GridY="4" scale9GridWidth="140" scale9GridHeight="2" skinParent="Default_Main"/>
+	<SkinImage skin="mail_lihe" skinParent="Default_Main"/>
+	<SkinFrame skin="chat_liaotiankuang" scale9GridX="11" scale9GridY="79" scale9GridWidth="20" scale9GridHeight="22" skinParent="Default_Main"/>
+	<CheckBox skin="default_yinxiao" upSkin="default_yinxiao_up" downSkin="default_yinxiao_down" skinParent="Default_Main"/>
+	<ImageNumber skin="num_" skinParent="Default_Main"/>
+</SkinConfig>

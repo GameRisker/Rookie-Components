@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with TexturePacker http://texturepacker.com-->
+<!--  -->
+<TextureAtlas imagePath="Example.png">
+    <SubTexture name="zhucezhanghao_down" x="2" y="81" width="208" height="77"/>
+    <SubTexture name="zhucezhanghao_up" x="2" y="2" width="208" height="77"/>
+</TextureAtlas>

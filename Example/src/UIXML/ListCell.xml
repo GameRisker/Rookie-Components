@@ -1,0 +1,6 @@
+<SkinFrame id="ListCell" skin="chat_liaotiankuang" x="188" y="463" width="497" height="100" alpha="1" enabled="true">
+  <Button id="Instante3" label="Button" skin="default_button1" x="12" y="37" width="100" height="50" enabled="true" alpha="1"/>
+  <ImageButton id="Instante4" skin="close" x="447" y="11" enabled="true" alpha="1" toggle="false"/>
+  <Label id="Instante5" color="16777215" label="label" fontSize="12" x="119" y="51" width="150" height="20" enabled="true" alpha="1" align="left"/>
+  <SkinImage id="Instante6" skin="mail_lihe" x="348" y="26" alpha="1" enabled="true"/>
+</SkinFrame>

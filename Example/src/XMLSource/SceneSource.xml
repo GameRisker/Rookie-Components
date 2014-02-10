@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+	type 资源类型 1： xml 2:二进制
+
+	id命名规则：场景名称_自己名称
+	Items 子节点必须有两项(xml文件，atf文件)
+-->
+<ScenSource>
+	<Scene Name="Default">
+		<Items id="Default_Main">
+			<Item type="1" url="UISource/RookieEditor.xml" name="基础配置文件"/>
+			<Item type="2" url="UISource/RookieEditor.atf" name="基础资源文件"/>
+		</Items>
+		<Items id="Default_Example">
+			<Item type="1" url="UISource/Example.xml" name="教程需要资源"/>
+			<Item type="2" url="UISource/Example.atf" name="教程需要资源"/>
+		</Items>
+	</Scene>
+</ScenSource>
