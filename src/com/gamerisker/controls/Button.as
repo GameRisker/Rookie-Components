@@ -218,6 +218,13 @@ package com.gamerisker.controls
 			if(m_label == null)
 				return;
 			
+			if(m_textField && m_label=="")
+			{
+				removeChild(m_textField,true);
+				m_textField = null;
+				return;
+			}
+			
 			if(m_textField == null)
 			{
 				m_textField = new TextField(width , height , "");

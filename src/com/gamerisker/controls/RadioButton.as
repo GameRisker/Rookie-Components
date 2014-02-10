@@ -36,6 +36,38 @@ package com.gamerisker.controls
 		/** @private */	
 		private var m_isCreateLabel : Boolean = false;
 
+		/** @private */	
+		private var m_tfOffsetX : int;
+
+		/** @private */	
+		private var m_tfOffsetY : int;
+
+		/**
+		 * 设置文本的偏移坐标 默认是按钮内部的0 
+		 */
+		public function get tfOffsetY():int{return m_tfOffsetY;}
+		public function set tfOffsetY(value:int):void
+		{
+			if(m_tfOffsetY != value)
+			{
+				m_tfOffsetY = value;
+				invalidate(INVALIDATION_FLAG_TEXT);
+			}
+		}
+
+		/**
+		 * 设置文本的偏移坐标 默认是按钮内部的0
+		 */
+		public function get tfOffsetX():int{return m_tfOffsetX;}
+		public function set tfOffsetX(value:int):void
+		{
+			if(m_tfOffsetX != value)
+			{
+				m_tfOffsetX = value;
+				invalidate(INVALIDATION_FLAG_TEXT);
+			}
+		}
+		
 		/**
 		 *	是否创建Label 
 		 * @return 
@@ -44,8 +76,11 @@ package com.gamerisker.controls
 		public function get isCreateLabel():Boolean{return m_isCreateLabel;}
 		public function set isCreateLabel(value:Boolean) : void
 		{
-			m_isCreateLabel = value;
-			invalidate(INVALIDATION_FLAG_TEXT);
+			if(m_isCreateLabel != value)
+			{
+				m_isCreateLabel = value;
+				invalidate(INVALIDATION_FLAG_TEXT);
+			}
 		}
 
 		/**
@@ -90,8 +125,11 @@ package com.gamerisker.controls
 		public function get label():String{return m_label;}
 		public function set label(value:String):void
 		{
-			m_label = value;
-			invalidate(INVALIDATION_FLAG_TEXT);
+			if(m_label != value)
+			{
+				m_label = value;
+				invalidate(INVALIDATION_FLAG_TEXT);
+			}
 		}
 		
 		/**
@@ -211,6 +249,13 @@ package com.gamerisker.controls
 			if(m_label==null)
 				return;
 			
+			if(m_textField && m_label=="" || !m_isCreateLabel)
+			{
+				removeChild(m_textField,true);
+				m_textField = null;
+				return;
+			}
+			
 			if(m_isCreateLabel)
 			{
 				if(m_textField==null)
@@ -225,14 +270,16 @@ package com.gamerisker.controls
 				{
 					m_textField.text = m_label;
 				}
-				m_textField.x = m_width;
-				m_textField.y = (m_height - m_textField.height) >> 1;
+				
+				if(m_label != m_textField.text)
+				{
+					m_textField.text = m_label;
+				}
+				
+				m_textField.x = m_tfOffsetX;
+				m_textField.y = m_tfOffsetY;
 			}
-			else if(m_textField)
-			{
-				removeChild(m_textField);
-				m_textField = null;
-			}
+			
 		}
 		
 		/** @private */	

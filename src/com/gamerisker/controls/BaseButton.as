@@ -24,7 +24,7 @@ package com.gamerisker.controls
 	public class BaseButton extends SkinnableContainer
 	{
 		/** @private */	
-		protected static const MAX_DRAG_DIST	: Number = 50;
+		protected static const MAX_DRAG_DIST	: Number = 0;
 		
 		/** @private */	
 		protected var m_upState 				: Texture;

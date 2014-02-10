@@ -26,10 +26,42 @@ package com.gamerisker.controls
 		private var m_group : String = "CheckBoxGroup";
 				
 		/** @private */	
-		private var m_lable : String;	
+		private var m_label : String;	
 		
 		/** @private */	
 		private var m_isCreateLabel : Boolean = false;
+		
+		/** @private */	
+		private var m_tfOffsetX : int;
+		
+		/** @private */	
+		private var m_tfOffsetY : int;
+		
+		/**
+		 * 设置文本的偏移坐标 默认是按钮内部的0 
+		 */
+		public function get tfOffsetY():int{return m_tfOffsetY;}
+		public function set tfOffsetY(value:int):void
+		{
+			if(m_tfOffsetY != value)
+			{
+				m_tfOffsetY = value;
+				invalidate(INVALIDATION_FLAG_TEXT);
+			}
+		}
+		
+		/**
+		 * 设置文本的偏移坐标 默认是按钮内部的0
+		 */
+		public function get tfOffsetX():int{return m_tfOffsetX;}
+		public function set tfOffsetX(value:int):void
+		{
+			if(m_tfOffsetX != value)
+			{
+				m_tfOffsetX = value;
+				invalidate(INVALIDATION_FLAG_TEXT);
+			}
+		}
 		
 		/**
 		 *	构造函数 
@@ -63,8 +95,11 @@ package com.gamerisker.controls
 		public function get isCreateLabel():Boolean{return m_isCreateLabel;}
 		public function set isCreateLabel(value:Boolean):void
 		{
-			m_isCreateLabel = value;
-			invalidate(INVALIDATION_FLAG_TEXT);
+			if(m_isCreateLabel != value)
+			{
+				m_isCreateLabel = value;
+				invalidate(INVALIDATION_FLAG_TEXT);
+			}
 		}
 		
 		/**
@@ -84,12 +119,12 @@ package com.gamerisker.controls
 		 *	设置label内容 
 		 * @return 
 		 */		
-		public function get label():String{return m_lable;}
+		public function get label():String{return m_label;}
 		public function set label(value:String):void
 		{
-			if(m_lable != value)
+			if(m_label != value)
 			{
-				m_lable = value;
+				m_label = value;
 				invalidate(INVALIDATION_FLAG_TEXT);
 			}
 		}
@@ -142,26 +177,33 @@ package com.gamerisker.controls
 		/** @private */	
 		protected function refreshText() : void
 		{
-			if(m_lable != null)
+			if(m_label == null)
+				return;
+			
+			if(m_textField && m_label=="" || !m_isCreateLabel)
 			{
-				if(m_isCreateLabel)
+				removeChild(m_textField,true);
+				m_textField = null;
+				return;
+			}
+			
+			if(m_isCreateLabel)
+			{
+				if(m_textField==null)
 				{
-					if(m_textField==null)
-					{
-						m_textField = new TextField(m_width,m_height,m_lable);
-						m_textField.autoSize = TextFieldAutoSize.HORIZONTAL;
-						m_textField.touchable = m_enabled;
-						addChild(m_textField);
-					}
-					
-					m_textField.x = 30;
-					m_textField.y = 10;
+					m_textField = new TextField(m_width,m_height,m_label);
+					m_textField.autoSize = TextFieldAutoSize.HORIZONTAL;
+					m_textField.touchable = m_enabled;
+					addChild(m_textField);
 				}
-				else if(m_textField)
+				
+				if(m_label != m_textField.text)
 				{
-					removeChild(m_textField);
-					m_textField = null;
+					m_textField.text = m_label;
 				}
+				
+				m_textField.x = m_tfOffsetX;
+				m_textField.y = m_tfOffsetY;
 			}
 		}
 		

@@ -13,7 +13,7 @@ package com.gamerisker.core
 	 */	
 	public class Component extends Sprite implements IComponent
 	{
-		public const version : String = "1.0.0.0";
+		public const version : String = "1.0.0.1";
 		
 		/** @private */	
 		protected static const VALIDATION_QUEUE : ValidationQueue = new ValidationQueue();
