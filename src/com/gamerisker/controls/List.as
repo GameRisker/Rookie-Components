@@ -198,7 +198,7 @@ package com.gamerisker.controls
 			} 
 			else if(newCaretIndex > lastVisibleItemIndex) 
 			{
-				verticalScrollPosition = (newCaretIndex + 1) * rowHeight - m_height;
+				verticalScrollPosition = (newCaretIndex) * rowHeight - m_height;
 			}
 		}
 		
