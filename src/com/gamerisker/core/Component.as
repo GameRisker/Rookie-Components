@@ -13,7 +13,7 @@ package com.gamerisker.core
 	 */	
 	public class Component extends Sprite implements IComponent
 	{
-		public const version : String = "1.0.0.1";
+		public const version : String = "1.0.0.2";
 		
 		/** @private */	
 		protected static const VALIDATION_QUEUE : ValidationQueue = new ValidationQueue();
@@ -143,7 +143,7 @@ package com.gamerisker.core
 		 *	清除组件纹理。包括销毁纹理本身,不能销毁原始纹理集，否则会报空
 		 * 
 		 */		
-		public function Destroy() : void
+		public function destroy() : void
 		{
 			dispose();
 			m_invalidationFlags = null;

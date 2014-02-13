@@ -27,7 +27,7 @@ package com.gamerisker.containers
 		/**
 		 *	清除组件纹理。包括销毁纹理本身,不能销毁原始纹理集，否则会报空 
 		 */		
-		override public function Destroy():void
+		override public function destroy():void
 		{
 			if(m_background)
 			{
@@ -35,7 +35,7 @@ package com.gamerisker.containers
 				m_background.dispose();
 				m_background = null;
 			}
-			super.Destroy();
+			super.destroy();
 		}
 		
 		/**

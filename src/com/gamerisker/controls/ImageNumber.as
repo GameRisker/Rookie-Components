@@ -49,7 +49,7 @@ package com.gamerisker.controls
 		/**
 		 *	清除组件纹理。包括销毁纹理本身,不能销毁原始纹理集，否则会报空   
 		 */		
-		override public function Destroy():void
+		override public function destroy():void
 		{
 			var i:int;
 			
@@ -67,7 +67,7 @@ package com.gamerisker.controls
 			m_imageList = null;
 			m_Textures = null;
 			
-			super.Destroy();
+			super.destroy();
 		}
 		
 		/**

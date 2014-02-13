@@ -60,7 +60,7 @@ package com.gamerisker.controls
 			addEventListener(TouchEvent.TOUCH , onTouchEvent);
 		}
 		
-		override public function Destroy():void
+		override public function destroy():void
 		{
 			removeChild(m_background);
 			removeChild(m_thumb);
@@ -72,7 +72,7 @@ package com.gamerisker.controls
 			m_background = null;
 			m_thumb = null;
 			
-			super.Destroy();
+			super.destroy();
 		}
 		
 		/**

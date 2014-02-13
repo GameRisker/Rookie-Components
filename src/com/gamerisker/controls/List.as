@@ -67,7 +67,7 @@ package com.gamerisker.controls
 		/**
 		 *	清除组件纹理。包括销毁纹理本身,不能销毁原始纹理集，否则会报空 
 		 */		
-		override public function Destroy():void
+		override public function destroy():void
 		{
 			clearCell();
 
@@ -76,7 +76,7 @@ package com.gamerisker.controls
 			m_activeCellRenderers = null;
 			m_previousVelocityY = null;
 			
-			super.Destroy();
+			super.destroy();
 		}
 		
 		/**
@@ -171,9 +171,15 @@ package com.gamerisker.controls
 		public function get dataProvider() : Array{return m_listData;}
 		public function set dataProvider(value : Array) : void
 		{
-			if(value == null)return;
+			if(value == null)
+			{
+				m_listData = [];
+			}
+			else
+			{
+				m_listData = value;
+			}
 			
-			m_listData = value;
 			invalidate(INVALIDATION_FLAG_DATA);
 		}
 		
@@ -209,6 +215,11 @@ package com.gamerisker.controls
 			const stateInvalid : Boolean = isInvalid(INVALIDATION_FLAG_STATE);
 			
 			var isReturn : Boolean;
+			
+			if(!m_listData)
+			{
+				return;
+			}
 			
 			if(skinInvalid)
 			{
@@ -401,7 +412,7 @@ package com.gamerisker.controls
 			{
 				cell = m_activeCellRenderers[i];
 				cell.removeEventListener(TouchEvent.TOUCH , onItemSelected);
-				cell.Destroy();
+				cell.destroy();
 			}
 			
 			m_activeCellRenderers.length = 0;

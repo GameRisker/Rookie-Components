@@ -72,7 +72,7 @@ package com.gamerisker.controls
 		/**
 		 *	清除组件纹理。包括销毁纹理本身,不能销毁原始纹理集，否则会报空 
 		 */		
-		override public function Destroy():void
+		override public function destroy():void
 		{
 			if(m_textField)
 			{
@@ -85,7 +85,7 @@ package com.gamerisker.controls
 			m_callfunction = null;
 			m_data = null;
 			m_textField = null;
-			super.Destroy();
+			super.destroy();
 		}
 		
 		/**

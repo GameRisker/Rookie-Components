@@ -144,7 +144,7 @@ package com.gamerisker.controls
 		/**
 		 *	清除组件纹理。包括销毁纹理本身,不能销毁原始纹理集，否则会报空 
 		 */		
-		override public function Destroy():void
+		override public function destroy():void
 		{
 			this.removeEventListener(TouchEvent.TOUCH , onTouchEvent);
 			
@@ -156,7 +156,7 @@ package com.gamerisker.controls
 			m_downState = null;
 			m_disabledState = null;
 			
-			super.Destroy();
+			super.destroy();
 		}
 		
 		/** @private */	

@@ -104,7 +104,7 @@ package com.gamerisker.controls
 		/**
 		 *	清除组件纹理。包括销毁纹理本身,不能销毁原始纹理集，否则会报空 
 		 */		
-		override public function Destroy():void
+		override public function destroy():void
 		{
 			var box : Tile;
 			for(var i:int=0;i<m_imgList.length;i++)
@@ -112,14 +112,14 @@ package com.gamerisker.controls
 				box = m_imgList[i];
 				box.removeEventListener(ComponentEvent.IMAGELOADBOX_CLICK , onItemClick);
 				removeChild(box);
-				box.Destroy();
+				box.destroy();
 			}
 			m_imgList.length = 0;
 			
 			m_imgList = null;
 			m_list = null;
 			
-			super.Destroy();
+			super.destroy();
 		}
 				
 		/**
@@ -414,7 +414,7 @@ package com.gamerisker.controls
 				image = m_imgList.pop();
 				image.removeEventListener(ComponentEvent.IMAGELOADBOX_CLICK , onItemClick);
 				removeChild(image);
-				image.Destroy();
+				image.destroy();
 				num--;
 			}
 			
