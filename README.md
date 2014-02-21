@@ -22,9 +22,13 @@ Rookie Components 特点介绍
 Rookie Editor
 =============
 
-什么是 Rookie Editor ?
+什么是 Rookie Editor ?  
 --------------------------
 Rookie Editor 是为Rookie Components 量身定制的可视化界面编辑器，编辑区完全使用GPU渲染，与真实项目环境一致，保证最大限度的对项目的支持。
+
+Rookie Editor Open Sources : 
+----------------------------------
+[https://github.com/YangDan/RookieEditor/][5]
 
 Rookie Editor 特点介绍
 -----------------------
@@ -53,3 +57,4 @@ QQ群：214535262<br>
 [2]:http://blog.gamerisker.com/?p=207
 [3]:http://blog.gamerisker.com/?p=217
 [4]:http://blog.gamerisker.com/version/RookieEditor_0_1_5.air
+[5]:https://github.com/YangDan/RookieEditor
