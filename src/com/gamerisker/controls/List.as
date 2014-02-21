@@ -4,8 +4,6 @@ package com.gamerisker.controls
 	import com.gamerisker.controls.renders.IListCell;
 	import com.gamerisker.event.ComponentEvent;
 	
-	import flash.geom.Rectangle;
-	
 	import starling.display.Sprite;
 	import starling.events.Event;
 	import starling.events.Touch;
@@ -31,9 +29,6 @@ package com.gamerisker.controls
 		
 		/** @private */	
 		protected var m_rowCount : int;													//最少可见列数
-		
-		/** @private */	
-		protected var m_hCount : int;
 		
 		/** @private */	
 		private var m_cellClass : Class;
@@ -107,7 +102,7 @@ package com.gamerisker.controls
 		 * @return 
 		 * 
 		 */		
-		public function get length() : int{return m_hCount;}
+		public function get length() : int{return m_listData.length;}
 		
 		/**
 		 *	设置List 最大显示列 	如果不设置，就没有限制
@@ -216,11 +211,6 @@ package com.gamerisker.controls
 			
 			var isReturn : Boolean;
 			
-			if(!m_listData)
-			{
-				return;
-			}
-			
 			if(skinInvalid)
 			{
 				isReturn = refreshSkin();
@@ -232,7 +222,7 @@ package com.gamerisker.controls
 				refreshLayout();
 			}
 			
-			if(dataInvalid)
+			if(dataInvalid && m_listData)
 			{
 				refreshData();
 			}
@@ -293,6 +283,7 @@ package com.gamerisker.controls
 				cell = new m_cellClass;
 				cell.name = "cellRender" + String(index);
 				cell.addEventListener(TouchEvent.TOUCH , onItemSelected);
+				cell.addEventListener(ComponentEvent.ITEM_SELECTED , onItemDispatch);
 				m_activeCellRenderers.push(cell);
 			}
 			
@@ -313,10 +304,14 @@ package com.gamerisker.controls
 		/** @private */	
 		protected function refreshData() : void
 		{
-			m_hCount = m_listData.length;
-			const heightTotal : int = m_rowHeight * m_hCount;
+			if(m_verticalAutoScrollTween)
+			{
+				stop();
+			}
 			
-			if(m_rowCount<m_hCount)
+			const heightTotal : int = m_rowHeight * m_listData.length;
+			
+			if(m_rowCount<m_listData.length)
 			{
 				m_maxVerticalScrollPosition = Math.max(0,heightTotal - m_scrollRect.height);
 			}
@@ -347,7 +342,7 @@ package com.gamerisker.controls
 			
 			if(m_verticalScrollBar)
 			{
-				if(m_rowCount<m_hCount && m_isTouching)
+				if(m_rowCount<m_listData.length && m_isTouching)
 					m_verticalScrollBar.showScrollBar();
 				else
 					m_verticalScrollBar.hideScrollBar();
@@ -378,7 +373,7 @@ package com.gamerisker.controls
 			var _ver : Number = Math.max(verticalScrollPosition,0);
 			
 			var startIndex : int = Math.floor(_ver/m_rowHeight);
-			var endIndex : int = Math.min(m_hCount,startIndex + m_rowCount+1);
+			var endIndex : int = Math.min(m_listData.length,startIndex + m_rowCount+1);
 
 			for each(cell in m_activeCellRenderers)
 				m_background.removeChild(cell);
@@ -412,6 +407,7 @@ package com.gamerisker.controls
 			{
 				cell = m_activeCellRenderers[i];
 				cell.removeEventListener(TouchEvent.TOUCH , onItemSelected);
+				cell.removeEventListener(ComponentEvent.ITEM_SELECTED , onItemDispatch);
 				cell.destroy();
 			}
 			
@@ -435,6 +431,16 @@ package com.gamerisker.controls
 				m_selectedIndex = m_listData.indexOf(event.currentTarget["data"]);
 				invalidate(INVALIDATION_FLAG_STATE);
 			}
+		}
+		
+		/**
+		 *	Item 抛出的事件 
+		 * @param event
+		 * 
+		 */		
+		private function onItemDispatch(event : Event) : void
+		{
+			dispatchEventWith(event.type , false , event.data);
 		}
 	}
 }

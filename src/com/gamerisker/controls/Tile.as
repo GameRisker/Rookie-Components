@@ -58,7 +58,7 @@ package com.gamerisker.controls
 		 *	设置数据对象 
 		 * @param data	数据
 		 * @param name	texture属性名
-		 * @param reset 	是否根据素材尺寸显示	ImageLoadBox
+		 * @param reset 是否根据素材尺寸显示	ImageLoadBox
 		 */		
 		public function setImageObject(data : Object , name : String , reset : Boolean = false) : void
 		{
@@ -66,6 +66,8 @@ package com.gamerisker.controls
 			{
 				m_data = data;
 				m_name = name;
+				
+				selected = false;
 				
 				invalidate(INVALIDATION_FLAG_SKIN);
 				
@@ -121,7 +123,7 @@ package com.gamerisker.controls
 				refreshSkin();
 			}
 			
-			if(sizeInvalid)
+			if(sizeInvalid || skinInvalid)
 			{
 				refreshSize();
 			}
@@ -147,27 +149,34 @@ package com.gamerisker.controls
 		/** @private */	
 		protected function refreshSkin() : void
 		{
-			if(m_data.hasOwnProperty(m_name))
+			if(m_data)
 			{
-				if(data.hasOwnProperty(m_name))
-					setImageTexture(data[m_name]);
+				if(m_data.hasOwnProperty(m_name))
+					setImageTexture(m_data[m_name]);
 				else
 					throw(new ArgumentError("not found property"));
 			}
 			else
 			{
 				if(m_background)
+				{
 					m_background.texture.dispose();
+					removeChild(m_background);
+					m_background = null;
+				}
 			}
 		}
 		
 		/** @private */	
 		protected function refreshSize() : void
 		{
-			if(m_background.width != m_width)
-				m_background.width = m_width;
-			if(m_background.height != m_height)
-				m_background.height = m_height;
+			if(m_background)
+			{
+				if(m_background.width != m_width)
+					m_background.width = m_width;
+				if(m_background.height != m_height)
+					m_background.height = m_height;
+			}
 		}
 		
 		/**

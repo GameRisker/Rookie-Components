@@ -1,14 +1,11 @@
 package com.gamerisker.containers
 {
-	import com.gamerisker.core.Component;
 	import com.gamerisker.core.SkinnableContainer;
 	
 	import flash.geom.Rectangle;
 	
 	import org.josht.starling.display.Scale9Image;
 	import org.josht.starling.textures.Scale9Textures;
-	
-	import starling.textures.Texture;
 	
 	/**
 	 *	可缩放图片显示类	根据9宫格拉升

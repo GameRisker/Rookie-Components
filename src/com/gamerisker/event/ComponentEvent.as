@@ -19,7 +19,7 @@ package com.gamerisker.event
 		public static const CHECKBOXCHANGE : String = "CheckBoxChange";
 		
 		/**
-		 * List				选中List Item
+		 * List				List Item 内部抛出的事件
 		 */		
 		public static const ITEM_SELECTED : String = "Item_Selected";
 		

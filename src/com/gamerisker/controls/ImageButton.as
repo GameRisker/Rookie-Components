@@ -8,7 +8,7 @@ package com.gamerisker.controls
 	import starling.events.TouchPhase;
 
 	/**
-	 *	图片按钮 	该组件不能设置 宽度 高度。
+	 *	图片按钮 	该组件不能设置 宽度 高度。按钮未设置纹理前，宽度，高度均为0
 	 * <br>纹理集合{	"upSkin" : 按钮弹起皮肤
 	 * 			   	"downSkin" : 按钮按下皮肤
 	 *             	"disabledSkin" : 按钮禁用皮肤
@@ -49,7 +49,7 @@ package com.gamerisker.controls
 		 */		
 		override public function destroy():void
 		{
-			if(!m_background)
+			if(m_background)
 			{
 				removeChild(m_background);
 				m_background.dispose();
@@ -104,7 +104,7 @@ package com.gamerisker.controls
 				else 
 					m_background.texture = m_disabledState;
 				
-				this.touchable = m_enabled;
+				m_background.touchable = m_enabled;
 			}
 		}
 		

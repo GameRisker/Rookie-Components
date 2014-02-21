@@ -1,6 +1,5 @@
 package com.gamerisker.containers
 {
-	import com.gamerisker.core.Component;
 	import com.gamerisker.core.SkinnableContainer;
 	
 	import starling.display.Image;
@@ -18,6 +17,9 @@ package com.gamerisker.containers
 	{
 		/** @private */	
 		protected var m_background : Image;
+		
+		/** @private */
+		protected var m_rotation : Number = 0;
 		
 		/**
 		 *	构造函数 
@@ -39,6 +41,21 @@ package com.gamerisker.containers
 		}
 		
 		/**
+		 *	设置图片角度 
+		 * @return 
+		 * 
+		 */		
+		override public function get rotation():Number{return m_rotation;}
+		override public function set rotation(value:Number):void
+		{
+			if(value != m_rotation)
+			{
+				m_rotation = value;
+				invalidate(INVALIDATION_FLAG_LAYOUT);
+			}
+		}
+		
+		/**
 		 *	 无法设置宽度,可获得宽度
 		 * @return 
 		 */		
@@ -52,12 +69,32 @@ package com.gamerisker.containers
 		override public function get height():Number{return m_height;}
 		override public function set height(h:Number):void{}
 		
+		override public function set skinInfo(value:Object):void
+		{
+			if(value==null)
+			{
+				m_skinInfo = null;
+				return;
+			}
+			
+			m_skinInfo = value;
+			
+			var texture : Texture = m_skinInfo["skin"] as Texture;
+			if(texture)
+			{
+				m_width = texture.width;
+				m_height = texture.height;
+			}
+			
+			invalidate(INVALIDATION_FLAG_SKIN);
+		}
 		
 		/** @private */	
 		override protected function draw():void
 		{
 			const skinInvalid : Boolean = isInvalid(INVALIDATION_FLAG_SKIN);
 			const stateInvalid : Boolean = isInvalid(INVALIDATION_FLAG_STATE);
+			const layoutInvalid : Boolean = isInvalid(INVALIDATION_FLAG_LAYOUT);
 
 			if(skinInvalid)
 			{
@@ -67,6 +104,11 @@ package com.gamerisker.containers
 			if(stateInvalid)
 			{
 				refreshState();
+			}
+			
+			if(layoutInvalid)
+			{
+				refreshLayout();
 			}
 		}
 		
@@ -94,10 +136,14 @@ package com.gamerisker.containers
 				addChildAt(m_background,0);
 			}
 			m_background.readjustSize();
-			
-			m_width = m_background.width;
-			m_height = m_background.height;
 		}
 		
+		private function refreshLayout() : void
+		{
+			if(m_rotation != m_background.rotation)
+			{
+				m_background.rotation = m_rotation;
+			}
+		}
 	}
 }

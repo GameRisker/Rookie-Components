@@ -1,7 +1,6 @@
 package com.gamerisker.containers
 {
 	import com.gamerisker.controls.ScrollBar;
-	import com.gamerisker.controls.renders.IListCell;
 	import com.gamerisker.core.Component;
 	
 	import flash.geom.Point;
@@ -11,9 +10,7 @@ package com.gamerisker.containers
 	import starling.animation.Transitions;
 	import starling.animation.Tween;
 	import starling.core.Starling;
-	import starling.display.DisplayObject;
 	import starling.display.DisplayObjectContainer;
-	import starling.display.Sprite;
 	import starling.events.Event;
 	import starling.events.Touch;
 	import starling.events.TouchEvent;
@@ -247,8 +244,7 @@ package com.gamerisker.containers
 			{
 				if(this.m_verticalAutoScrollTween)
 				{
-					Starling.juggler.remove(this.m_verticalAutoScrollTween);
-					this.m_verticalAutoScrollTween = null;
+					stop();
 				}
 				
 				m_velocityY = 0;
@@ -418,6 +414,13 @@ package com.gamerisker.containers
 					this.finishScrollingVertically();
 				}
 			}
+		}
+		
+		protected function stop() : void
+		{
+			Starling.juggler.remove(this.m_verticalAutoScrollTween);
+			this.m_verticalAutoScrollTween = null;
+			scrollTweenComplete();
 		}
 		
 		/** 

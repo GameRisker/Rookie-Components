@@ -2,9 +2,6 @@ package com.gamerisker.core
 {
 	import com.gamerisker.event.ComponentEvent;
 	
-	import flash.utils.Dictionary;
-	
-	import starling.display.DisplayObject;
 	import starling.display.Sprite;
 
 	/**

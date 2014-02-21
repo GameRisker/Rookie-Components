@@ -270,24 +270,27 @@ package com.gamerisker.controls
 			const layoutInvalid : Boolean = isInvalid(INVALIDATION_FLAG_LAYOUT);
 			const stateInvalid : Boolean = isInvalid(INVALIDATION_FLAG_STATE);
 			
-			if(dataInvalid)
+			if(m_list)
 			{
-				refreshData();
-			}
-			
-			if(sizeInvalid || dataInvalid)
-			{
-				refreshSize();
-			}
-			
-			if(layoutInvalid || dataInvalid || sizeInvalid)
-			{
-				refreshLayout();
-			}
-			
-			if(stateInvalid)
-			{
-				refreshState();
+				if(dataInvalid)
+				{
+					refreshData();
+				}
+				
+				if(sizeInvalid || dataInvalid)
+				{
+					refreshSize();
+				}
+				
+				if(layoutInvalid || dataInvalid || sizeInvalid)
+				{
+					refreshLayout();
+				}
+				
+				if(stateInvalid)
+				{
+					refreshState();
+				}
 			}
 		}
 		
