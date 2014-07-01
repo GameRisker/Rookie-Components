@@ -3,8 +3,6 @@ package com.gamerisker.controls
 	import com.gamerisker.core.Component;
 	import com.gamerisker.event.ComponentEvent;
 	
-	import starling.display.DisplayObject;
-	import starling.display.Sprite;
 	import starling.events.Event;
 	
 	/**

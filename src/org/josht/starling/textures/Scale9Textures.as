@@ -25,7 +25,7 @@
 package org.josht.starling.textures
 {
 	import flash.geom.Rectangle;
-
+	
 	import starling.textures.Texture;
 
 	/**
@@ -228,7 +228,8 @@ package org.josht.starling.textures
 		private function initialize():void
 		{
 			if(!_texture) return;
-			const textureFrame:Rectangle = this._texture.frame;
+			
+			const textureFrame:Rectangle = new Rectangle(0, 0, this._texture.width, this._texture.height);
 			const leftWidth:Number = this._scale9Grid.x;
 			const centerWidth:Number = this._scale9Grid.width;
 			const rightWidth:Number = textureFrame.width - this._scale9Grid.width - this._scale9Grid.x;

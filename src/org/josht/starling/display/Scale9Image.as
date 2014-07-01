@@ -371,9 +371,8 @@ package org.josht.starling.display
 		{
 			if(!_textures.texture) return;
 			
-			const frame:Rectangle = this._textures.texture.frame;
-			this.width = frame.width * this._textureScale;
-			this.height = frame.height * this._textureScale;
+			this.width = this._textures.texture.width * this._textureScale;
+			this.height = this._textures.texture.height * this._textureScale;
 		}
 
 		/**
@@ -392,12 +391,11 @@ package org.josht.starling.display
 				helperImage.smoothing = this._smoothing;
 				helperImage.color = this._color;
 
-				const frame:Rectangle = this._textures.texture.frame;
 				const grid:Rectangle = this._textures.scale9Grid;
 				const scaledLeftWidth:Number = grid.x * this._textureScale;
 				const scaledTopHeight:Number = grid.y * this._textureScale;
-				const scaledRightWidth:Number = (frame.width - grid.x - grid.width) * this._textureScale;
-				const scaledBottomHeight:Number = (frame.height - grid.y - grid.height) * this._textureScale;
+				const scaledRightWidth:Number = (this._textures.texture.width - grid.x - grid.width) * this._textureScale;
+				const scaledBottomHeight:Number = (this._textures.texture.height - grid.y - grid.height) * this._textureScale;
 				const scaledCenterWidth:Number = this._width - scaledLeftWidth - scaledRightWidth;
 				const scaledMiddleHeight:Number = this._height - scaledTopHeight - scaledBottomHeight;
 
