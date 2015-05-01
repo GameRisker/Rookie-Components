@@ -13,7 +13,7 @@ package com.gamerisker.controls
 	/**
 	 *  List 组件将显示基于列表的信息，并且是适合显示信息数组的理想选择。 
 	 *  该组件必须调用setCellRender方法设置List的渲染器<br> 
-	 * @author YangDan
+	 * @author GameRisker
 	 * 
 	 */	
 	public class List extends BaseScrollPane
