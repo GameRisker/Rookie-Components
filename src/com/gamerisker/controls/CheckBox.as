@@ -9,7 +9,7 @@ package com.gamerisker.controls
 	/**
 	 *	CheckBox : 
 	 * 皮肤设置 继承ImageButton;
-	 * @author YangDan
+	 * @author GameRisker
 	 */	
 	public class CheckBox extends ImageButton
 	{
