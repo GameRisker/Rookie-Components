@@ -6,7 +6,7 @@ package com.gamerisker.core
 
 	/**
 	 * Component 类是所有可视组件的基类
-	 * @author YangDan
+	 * @author GameRisker
 	 */	
 	public class Component extends Sprite implements IComponent
 	{
