@@ -13,7 +13,7 @@ package com.gamerisker.controls
 	 *  选择组中的一个单选按钮将取消选择组内当前选定的单选按钮。 
 	 *  您可以设置 group 参数，以指示单选按钮属于哪个组。  
 	 * <br>皮肤设置继承ImageButton
-	 * @author YangDan
+	 * @author GameRisker
 	 * 
 	 */	
 	public class RadioButton extends ImageButton
