@@ -8,7 +8,7 @@ package game.manager
 
 	/**
 	 * 资源管理类
-	 * @author YangDan
+	 * @author GameRisker
 	 * 
 	 */
 	public class TexturesManager
