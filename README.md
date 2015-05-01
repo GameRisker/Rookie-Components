@@ -28,7 +28,7 @@ Rookie Editor 是为Rookie Components 量身定制的可视化界面编辑器，
 
 Rookie Editor Open Sources : 
 ----------------------------------
-[https://github.com/YangDan/RookieEditor/][5]
+[https://github.com/GameRisker/RookieEditor/][5]
 
 Rookie Editor 特点介绍
 -----------------------
@@ -44,9 +44,8 @@ Rookie Editor 下载
 意见反馈
 --------
 如果有任何BUG或者意见，欢迎反馈。<br>
-QQ：8480136<br>
-QQ群：214535262<br>
-邮箱：8480136@qq.com<br>
+QQ：133523686<br>
+邮箱：admin@gamerisker.com<br>
 
 实例地址：
 --------
@@ -57,4 +56,4 @@ QQ群：214535262<br>
 [2]:http://blog.gamerisker.com/?p=207
 [3]:http://blog.gamerisker.com/?p=217
 [4]:http://blog.gamerisker.com/version/RookieEditor_0_1_5.air
-[5]:https://github.com/YangDan/RookieEditor
+[5]:https://github.com/GameRisker/RookieEditor
