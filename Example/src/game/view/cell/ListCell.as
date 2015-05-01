@@ -7,7 +7,7 @@ package game.view.cell
 
 	/**
 	 *	在线用户渲染器 
-	 * @author YangDan
+	 * @author GameRisker
 	 * 
 	 */	
 	public class ListCell extends BaseCell
