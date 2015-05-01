@@ -5,7 +5,7 @@ package com.gamerisker.core
 	
 	/**
 	 * 核心渲染序列处理类
-	 * @author YangDan
+	 * @author GameRisker
 	 * 
 	 */	
 	public class ValidationQueue implements IAnimatable
