@@ -2,7 +2,7 @@ package com.gamerisker.controls.renders
 {
 	/**
 	 * List 的 渲染接口
-	 * @author YangDan
+	 * @author GameRisker
 	 * 
 	 */	
 	public interface IListCell
