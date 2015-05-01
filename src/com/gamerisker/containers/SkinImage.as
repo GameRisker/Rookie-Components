@@ -7,7 +7,7 @@ package com.gamerisker.containers
 	
 	/**
 	 *	 静态图片显示类	不可以设置宽度高度，显示的高度宽度为纹理的高宽度
-	 * @author YangDan
+	 * @author GameRisker
 	 * 	{	
 	 * 		"skin" : 皮肤名称,
 	 * 		"skinParent" : 皮肤父纹理集合
