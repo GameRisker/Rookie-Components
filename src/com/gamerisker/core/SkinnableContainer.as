@@ -2,7 +2,7 @@ package com.gamerisker.core
 {
 	/**
 	 * SkinnableContainer 类是具有可视内容的可设置外观容器的基类
-	 * @author YangDan
+	 * @author GameRisker
 	 */	
 	public class SkinnableContainer extends Component
 	{
