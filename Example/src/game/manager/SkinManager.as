@@ -9,7 +9,7 @@ package game.manager
 	
 	/**
 	 *	皮肤管理器 
-	 * @author YangDan
+	 * @author GameRisker
 	 * 
 	 */	
 	public class SkinManager
