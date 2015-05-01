@@ -14,7 +14,7 @@ package com.gamerisker.controls
 	 *             	"disabledSkin" : 按钮禁用皮肤
 	 * 				"skinParent" : 皮肤父纹理集合		
 	 * 				}
-	 * @author YangDan
+	 * @author GameRisker
 	 * 
 	 */	
 	public class ImageButton extends BaseButton
