@@ -12,7 +12,7 @@ package com.gamerisker.controls
 
 	/**
 	 *	图片显示方形 
-	 * @author YangDan
+	 * @author GameRisker
 	 * 
 	 */	
 	public class Tile extends Component
