@@ -7,7 +7,7 @@ package com.gamerisker.controls
 	
 	/**
 	 *	ImageLoadBox 组件 集合 
-	 * @author YangDan
+	 * @author GameRisker
 	 * 
 	 */
 	public class TileGroup extends Component
