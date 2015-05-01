@@ -20,7 +20,7 @@ package game.manager
 	/**
 	 *	组件管理器 
 	 * <br>主要功能：根据界面编辑器XML 生成相应的界面
-	 * @author YangDan
+	 * @author GameRisker
 	 * 
 	 */	
 	public class ComponentManager
