@@ -8,7 +8,7 @@ package com.gamerisker.controls
 	
 	/**
 	 *	缓动文本组件 
-	 * @author YangDan
+	 * @author GameRisker
 	 * 
 	 */	
 	public class ScrollText extends BaseScrollPane
