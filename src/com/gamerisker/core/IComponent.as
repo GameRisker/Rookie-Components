@@ -2,7 +2,7 @@ package com.gamerisker.core
 {
 	/**
 	 *	组件接口 
-	 * @author YangDan
+	 * @author GameRisker
 	 * 
 	 */	
 	public interface IComponent
