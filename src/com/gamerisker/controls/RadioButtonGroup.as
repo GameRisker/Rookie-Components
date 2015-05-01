@@ -6,7 +6,7 @@ package com.gamerisker.controls
 
 	/**
 	 * 	RadioButton	管理器
-	 * @author YangDan
+	 * @author GameRisker
 	 * 
 	 */	
 	public class RadioButtonGroup extends EventDispatcher
