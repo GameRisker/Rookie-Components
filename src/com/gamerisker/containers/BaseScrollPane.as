@@ -18,7 +18,7 @@ package com.gamerisker.containers
 	
 	/**
 	 * BaseScrollPane 类 处理基础的滚动功能
-	 * @author YangDan
+	 * @author GameRisker
 	 * 
 	 */	
 	public class BaseScrollPane extends Component
