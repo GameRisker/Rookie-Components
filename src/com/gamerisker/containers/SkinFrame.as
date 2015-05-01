@@ -17,7 +17,7 @@ package com.gamerisker.containers
 	 * 		"scale9GridHeight" : 9宫格高度,
 	 * 		"skinParent" : 皮肤父纹理集合
 	 * }
-	 * @author YangDan
+	 * @author GameRisker
 	 * 
 	 */	
 	public class SkinFrame extends SkinnableContainer
