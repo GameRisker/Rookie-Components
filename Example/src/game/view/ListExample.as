@@ -30,7 +30,7 @@ package game.view
 
 	/**
 	 *	List 实例 
-	 * @author YangDan
+	 * @author GameRisker
 	 * 
 	 */	
 	public class ListExample extends View
