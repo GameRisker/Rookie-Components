@@ -9,7 +9,7 @@ package com.gamerisker.controls
 
 	/**
 	 *	Label 组件将显示一行或多行纯文本，这些文本的对齐和大小格式可进行设置。 
-	 * @author YangDan
+	 * @author GameRisker
 	 * 
 	 */	
 	public class Label extends Component
