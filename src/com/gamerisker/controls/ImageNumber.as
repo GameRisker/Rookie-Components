@@ -9,7 +9,7 @@ package com.gamerisker.controls
 	/**
 	 *	图片数字 
 	 * 皮肤设置
-	 * @author YangDan
+	 * @author GameRisker
 	 * {
 	 *  	"skin" : 皮肤名称 （是一个数字集合）
 	 *      "skinParent" : 皮肤父纹理集合
