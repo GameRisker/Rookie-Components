@@ -3,7 +3,7 @@ package com.gamerisker.event
 	
 	/**
 	 *	组件事件 
-	 * @author YangDan
+	 * @author GameRisker
 	 * 
 	 */
 	public class ComponentEvent
