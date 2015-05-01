@@ -31,7 +31,7 @@ package com.gamerisker.containers
 	 * 		"textboundsH" : 弹出框title的高度,
 	 * 		"skinParent" : 皮肤父纹理集合
 	 *	}
-	 * @author YangDan
+	 * @author GameRisker
 	 */	
 	public class TitleWindow extends SkinnableContainer
 	{
