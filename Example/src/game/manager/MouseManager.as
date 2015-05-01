@@ -12,7 +12,7 @@ package game.manager
 	
 	/**
 	 *	鼠标管理器 习惯页游的写法了。
-	 * @author YangDan
+	 * @author GameRisker
 	 * 
 	 */	
 	public class MouseManager
