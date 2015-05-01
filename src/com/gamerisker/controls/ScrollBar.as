@@ -12,7 +12,7 @@ package com.gamerisker.controls
 
 	/**
 	 *	滚动条  
-	 * @author YangDan
+	 * @author GameRisker
 	 * 
 	 */	
 	public class ScrollBar extends Component
